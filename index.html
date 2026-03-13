@@ -1,0 +1,1419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ART.DIRECTED.</title>
+  <link rel="icon" type="image/png" href="brand_assets/AD.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <style>
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    html { scroll-behavior: smooth; }
+    button { background: none; border: none; padding: 0; cursor: pointer; font: inherit; }
+
+    :root {
+      --off-white:  #F7F5F2;
+      --charcoal:   #111111;
+      --warm-grey:  #9A9893;
+      --rule:       #D8D5D1;
+      --font-logo:  'Anton', sans-serif;
+      --font-serif: 'EB Garamond', Georgia, serif;
+      --font-sans:  'DM Sans', sans-serif;
+      --nav-h:      80px;
+      --pad:        clamp(28px, 5.5vw, 88px);
+    }
+
+    body {
+      background: var(--off-white);
+      color: var(--charcoal);
+      font-family: var(--font-sans);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ══════════════════════════════════════════
+       NAV
+    ══════════════════════════════════════════ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 300;
+      height: var(--nav-h);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 var(--pad);
+      background: var(--off-white);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav__logo {
+      font-family: var(--font-logo);
+      font-size: 22px;
+      letter-spacing: 0.04em;
+      color: var(--charcoal);
+      transition: opacity 200ms ease;
+    }
+    .nav__logo:hover { opacity: 0.4; }
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: 36px;
+      list-style: none;
+    }
+    .nav__link {
+      font-family: var(--font-sans);
+      font-size: 12px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--charcoal);
+      transition: opacity 200ms ease;
+    }
+    .nav__link:hover { opacity: 0.38; }
+
+    /* ══════════════════════════════════════════
+       HERO
+    ══════════════════════════════════════════ */
+    .hero {
+      margin-top: var(--nav-h);
+      height: calc(90vh - var(--nav-h));
+      min-height: 480px;
+      overflow: hidden;
+      background: #1a1816;
+    }
+    .hero__img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center 40%;
+      display: block;
+    }
+
+    /* ══════════════════════════════════════════
+       INTRO
+    ══════════════════════════════════════════ */
+    .intro {
+      padding: clamp(28px, 3.5vw, 52px) var(--pad) clamp(32px, 4vw, 56px);
+      text-align: center;
+    }
+    .intro__inner {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .intro__tagline {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(30px, 4.2vw, 52px);
+      color: var(--charcoal);
+      line-height: 1.2;
+      margin-bottom: 24px;
+    }
+    .line-clip {
+      display: block;
+      padding-bottom: 0.12em;
+    }
+    .line-clip + .line-clip { margin-top: -0.04em; }
+    .tl { display: block; }
+
+    /* Sub line */
+    .sub-clip { display: block; padding-bottom: 0.1em; }
+    .intro__sub {
+      font-family: var(--font-sans);
+      font-size: clamp(14px, 1.5vw, 18px);
+      font-weight: 400;
+      color: var(--charcoal);
+      line-height: 1.4;
+    }
+    .intro__sub-inner { display: block; }
+
+    /* ── Blur word animation ─────────────────── */
+    .blur-word {
+      display: inline-block;
+      opacity: 0;
+      filter: blur(12px);
+      transform: translateY(16px);
+      transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  filter  1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      will-change: filter, transform, opacity;
+    }
+    .blur-word.is-visible {
+      opacity: 1;
+      filter: blur(0px);
+      transform: translateY(0);
+    }
+    /* Sub line words slightly dimmer */
+    .intro__sub .blur-word.is-visible { opacity: 0.72; }
+
+    /* ══════════════════════════════════════════
+       WORK
+    ══════════════════════════════════════════ */
+    #work {
+      padding: clamp(24px, 3vw, 40px) var(--pad) clamp(40px, 5vw, 72px);
+      border-top: 1px solid var(--rule);
+    }
+    .work-header {
+      display: flex;
+      align-items: baseline;
+      justify-content: center;
+      padding-top: 22px;
+      margin-bottom: clamp(28px, 3.5vw, 44px);
+    }
+    .section-heading {
+      font-family: var(--font-sans);
+      font-weight: 400;
+      font-size: clamp(18px, 2.2vw, 28px);
+      color: var(--charcoal);
+      line-height: 1.1;
+      text-align: center;
+    }
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+    }
+    @media (max-width: 900px) {
+      .work-grid { grid-template-columns: repeat(2, 1fr); gap: 28px; }
+    }
+    @media (max-width: 560px) {
+      .work-grid { grid-template-columns: 1fr; gap: 24px; }
+    }
+    .work-tile { cursor: pointer; }
+    .work-tile__thumb {
+      overflow: hidden;
+      position: relative;
+      background: #d4d0ca;
+      margin-bottom: 14px;
+      aspect-ratio: 3 / 4;
+    }
+    .work-tile__img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+      transition: transform 700ms ease;
+    }
+    .work-tile:hover .work-tile__img { transform: scale(1.03); }
+    .work-tile__fill {
+      aspect-ratio: 3 / 4;
+      background: linear-gradient(135deg, #d4d0ca 0%, #c0bcb6 100%);
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 700ms ease;
+    }
+    .work-tile:hover .work-tile__fill { transform: scale(1.03); }
+    .work-tile__name {
+      font-family: var(--font-sans); font-weight: 400;
+      font-size: 20px; color: var(--charcoal);
+      line-height: 1.2; margin-bottom: 5px;
+    }
+    .work-tile__cat {
+      font-family: var(--font-sans); font-size: 13px;
+      font-weight: 400; color: var(--charcoal);
+      opacity: 0.55;
+    }
+
+    /* ══════════════════════════════════════════
+       HYBRID PRODUCTION
+    ══════════════════════════════════════════ */
+    .hybrid {
+      background: var(--charcoal);
+      padding: clamp(64px, 8vw, 112px) var(--pad);
+    }
+    .hybrid__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(40px, 5.5vw, 80px);
+      align-items: center;
+    }
+    .hybrid__images {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+    .hybrid__img {
+      aspect-ratio: 3 / 4;
+      overflow: hidden;
+      background: #222;
+    }
+    .hybrid__img img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      display: block;
+    }
+    .hybrid__heading {
+      font-family: var(--font-sans); font-weight: 400;
+      font-size: clamp(22px, 2.8vw, 36px); color: #fff;
+      line-height: 1.1; margin-bottom: 20px;
+    }
+    .hybrid__standfirst {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: clamp(16px, 1.8vw, 22px);
+      color: rgba(255,255,255,0.6); line-height: 1.45;
+      margin-bottom: 20px;
+    }
+    .hybrid__body {
+      font-family: var(--font-sans); font-size: 15px;
+      font-weight: 300; color: rgba(255,255,255,0.85);
+      line-height: 1.8;
+      margin-bottom: 28px;
+    }
+    .hybrid__body p + p { margin-top: 12px; }
+    .hybrid__cta {
+      display: inline-flex; align-items: center; gap: 8px;
+      font-family: var(--font-sans); font-size: 11px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.13em; color: rgba(255,255,255,0.55);
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 4px; cursor: pointer;
+      transition: color 250ms ease, border-color 250ms ease;
+    }
+    .hybrid__cta:hover { color: #fff; border-color: rgba(255,255,255,0.55); }
+
+    /* ══════════════════════════════════════════
+       EDITORIAL (Approach, About)
+    ══════════════════════════════════════════ */
+    .editorial {
+      padding: clamp(52px, 6.5vw, 88px) var(--pad);
+      border-top: 1px solid var(--rule);
+    }
+    .editorial__inner {
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: start;
+    }
+    .about__inner {
+      display: grid;
+      grid-template-columns: 2fr 3fr;
+      gap: clamp(40px, 5vw, 80px);
+      align-items: stretch;
+    }
+    .about__image {
+      overflow: hidden;
+      align-self: stretch;
+      position: relative;
+      min-height: 300px;
+    }
+    .about__image img {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+    }
+    .about__text { padding-top: clamp(4px, 1vw, 16px); }
+    .editorial__label {
+      font-family: var(--font-sans); font-size: 10px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.18em; color: var(--warm-grey);
+      margin-bottom: 10px;
+    }
+    .editorial__copy p {
+      font-family: var(--font-sans); font-size: 15px;
+      font-weight: 300; line-height: 1.7; color: #111;
+      margin-bottom: 8px;
+    }
+
+    /* About lead sentence */
+    .about__lead {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: clamp(15px, 1.3vw, 18px);
+      color: var(--charcoal); line-height: 1.6;
+      margin-bottom: 28px;
+    }
+
+    /* ── Approach animated copy ─────────────── */
+    .approach-copy { display: flex; flex-direction: column; gap: 0; }
+    .approach-line {
+      opacity: 0; transform: translateY(20px);
+      transition: opacity 650ms cubic-bezier(0.16,1,0.3,1),
+                  transform 650ms cubic-bezier(0.16,1,0.3,1);
+    }
+    .approach-line.is-visible { opacity: 1; transform: none; }
+    .approach-line--lead {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: clamp(20px, 2.4vw, 30px);
+      color: var(--charcoal); line-height: 1.3;
+      margin-bottom: 24px;
+      transition-delay: 0ms;
+    }
+    .approach-line--body {
+      font-family: var(--font-sans); font-size: 15px;
+      font-weight: 300; line-height: 1.7; color: #111;
+      margin-bottom: 8px;
+    }
+    .approach-line--body:nth-child(2) { transition-delay: 120ms; }
+    .approach-line--body:nth-child(3) { transition-delay: 220ms; }
+    .approach-line--body:nth-child(4) { transition-delay: 320ms; }
+    .approach-line--close {
+      font-family: var(--font-sans); font-size: 14px;
+      font-weight: 500; color: var(--charcoal);
+      line-height: 1.6; margin-top: 4px;
+      transition-delay: 420ms;
+    }
+
+    /* ══════════════════════════════════════════
+       CONTACT
+    ══════════════════════════════════════════ */
+    .contact {
+      background: var(--charcoal);
+      padding: clamp(64px, 8vw, 112px) var(--pad);
+    }
+    .contact__inner {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: clamp(56px, 7vw, 112px);
+      align-items: start;
+    }
+    .contact__heading {
+      font-family: var(--font-serif); font-weight: 400;
+      font-size: clamp(28px, 3.5vw, 46px); color: #fff;
+      line-height: 1.1; margin-bottom: 36px;
+    }
+    .contact__info-row { margin-bottom: 16px; }
+    .contact__info-label {
+      font-family: var(--font-sans); font-size: 10px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.14em; color: rgba(255,255,255,0.28);
+      margin-bottom: 4px;
+    }
+    .contact__info-value {
+      font-family: var(--font-sans); font-size: 14px;
+      font-weight: 300; color: rgba(255,255,255,0.6);
+    }
+    .contact-form { display: flex; flex-direction: column; gap: 28px; }
+    .form-row { display: flex; flex-direction: column; gap: 8px; }
+    .form-row label {
+      font-family: var(--font-sans); font-size: 10px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.14em; color: rgba(255,255,255,0.28);
+    }
+    .form-row input, .form-row textarea {
+      background: transparent; border: none;
+      border-bottom: 1px solid rgba(255,255,255,0.16);
+      color: #fff; font-family: var(--font-sans);
+      font-size: 14px; font-weight: 300;
+      padding: 10px 0; outline: none;
+      -webkit-appearance: none;
+      transition: border-color 300ms ease;
+    }
+    .form-row input:focus, .form-row textarea:focus { border-bottom-color: rgba(255,255,255,0.5); }
+    .form-row textarea { resize: none; height: 88px; }
+    .btn-enquiry {
+      align-self: flex-start;
+      font-family: var(--font-sans); font-size: 11px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.13em; color: #fff;
+      border: 1px solid rgba(255,255,255,0.26);
+      padding: 14px 32px; cursor: pointer;
+      transition: border-color 280ms ease, background 280ms ease;
+    }
+    .btn-enquiry:hover {
+      border-color: rgba(255,255,255,0.7);
+      background: rgba(255,255,255,0.06);
+    }
+
+    /* ══════════════════════════════════════════
+       FOOTER
+    ══════════════════════════════════════════ */
+    .footer {
+      background: var(--charcoal);
+      border-top: 1px solid rgba(255,255,255,0.07);
+      padding: 24px var(--pad);
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer__brand {
+      font-family: var(--font-logo); font-size: 12px;
+      letter-spacing: 0.05em; color: rgba(255,255,255,0.22);
+    }
+    .footer__copy {
+      font-family: var(--font-sans); font-size: 10px;
+      color: rgba(255,255,255,0.18);
+    }
+
+    /* ══════════════════════════════════════════
+       OVERLAYS
+    ══════════════════════════════════════════ */
+    .overlay {
+      position: fixed; inset: 0; z-index: 400;
+      background: var(--off-white);
+      overflow-y: auto;
+      opacity: 0; pointer-events: none;
+      transition: opacity 320ms ease;
+    }
+    .overlay.is-open { opacity: 1; pointer-events: all; }
+
+    .overlay__topbar {
+      position: sticky; top: 0; z-index: 10;
+      height: var(--nav-h);
+      display: flex; align-items: center;
+      justify-content: center;
+      padding: 0 var(--pad);
+      background: rgba(247,245,242,0.95);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .overlay__close-btn {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-sans); font-size: 14px;
+      font-weight: 600; text-transform: uppercase;
+      letter-spacing: 0.16em; color: var(--charcoal);
+      transition: opacity 200ms ease;
+    }
+    .overlay__close-btn:hover { opacity: 0.4; }
+
+    .overlay__content {
+      padding: clamp(44px, 5.5vw, 80px) var(--pad) clamp(80px, 10vw, 128px);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .overlay__header { margin-bottom: clamp(32px, 4vw, 48px); text-align: center; }
+    .overlay__title {
+      font-family: var(--font-serif); font-weight: 400;
+      font-size: clamp(28px, 4vw, 52px);
+      color: var(--charcoal); line-height: 1.1;
+      margin-bottom: 10px;
+    }
+    .overlay__subtitle {
+      font-family: var(--font-sans); font-size: 11px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.13em; color: var(--warm-grey);
+    }
+
+    /* Section label */
+    .overlay__row-label {
+      font-family: var(--font-sans); font-size: 10px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.17em; color: #555;
+      margin-bottom: 16px;
+      text-align: center;
+    }
+
+    /* Product reference row */
+    .overlay__product-row {
+      display: grid;
+      gap: 12px;
+      margin-left: auto;
+      margin-right: auto;
+      margin-bottom: 14px;
+    }
+    .overlay__product-row--1 { grid-template-columns: 1fr; max-width: 480px; }
+    .overlay__product-row--2 { grid-template-columns: 1fr 1fr; max-width: 860px; }
+    .overlay__product-row--3 { grid-template-columns: repeat(3, 1fr); max-width: 1100px; }
+    .overlay__product-cell { background: #ebe8e3; }
+    .overlay__product-cell img {
+      width: 100%; height: auto;
+      display: block;
+    }
+
+    .overlay__row-caption {
+      font-family: var(--font-sans); font-size: 13px;
+      font-weight: 300; color: #555;
+      margin-bottom: clamp(36px, 4.5vw, 64px);
+      text-align: center;
+    }
+
+    /* Campaign images — stacked, full natural aspect ratio */
+    .overlay__images {
+      display: flex; flex-direction: column;
+      gap: clamp(16px, 2vw, 28px);
+      margin-bottom: clamp(44px, 5.5vw, 80px);
+    }
+    .overlay__image {
+      width: 100%; overflow: hidden;
+      background: #d8d4ce;
+    }
+    .overlay__image img { width: 100%; height: auto; display: block; }
+    /* All images same full width — no portrait constraint */
+    .overlay__image--portrait { width: 100%; }
+
+    .overlay__footer-text {
+      font-family: var(--font-sans); font-size: 15px;
+      font-weight: 300; line-height: 1.8; color: #2a2a2a;
+      max-width: 640px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: center;
+      text-wrap: balance;
+      padding-top: clamp(28px, 3.5vw, 44px);
+      border-top: 1px solid var(--rule);
+      margin-bottom: clamp(52px, 6.5vw, 88px);
+    }
+    .overlay__footer-text p + p { margin-top: 14px; }
+
+    .overlay__next-row {
+      display: flex; align-items: baseline; gap: 14px;
+      padding-top: 28px; border-top: 1px solid var(--rule);
+    }
+    .overlay__next-label {
+      font-family: var(--font-sans); font-size: 10px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.14em; color: var(--warm-grey);
+    }
+    .overlay__next-link {
+      font-family: var(--font-serif); font-size: 20px;
+      color: var(--charcoal); cursor: pointer;
+      transition: opacity 200ms ease;
+    }
+    .overlay__next-link:hover { opacity: 0.4; }
+
+    .overlay__back-home {
+      position: relative;
+      text-align: center;
+      margin-top: clamp(48px, 6vw, 80px);
+      margin-bottom: clamp(48px, 6vw, 80px);
+      border-top: 1px solid var(--rule);
+      cursor: pointer;
+    }
+    .overlay__back-home span {
+      position: relative;
+      top: -0.65em;
+      display: inline-block;
+      background: var(--off-white);
+      padding: 0 20px;
+      font-family: var(--font-sans);
+      font-size: 11px;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      color: var(--charcoal);
+      transition: opacity 200ms ease;
+    }
+    .overlay__back-home:hover span { opacity: 0.4; }
+
+    /* Video embed */
+    .overlay__video {
+      width: 100%; display: block;
+      background: #111;
+      outline: none;
+    }
+
+    /* Sub-campaign sections (SALTWTR Berry / Lemon etc) */
+    .overlay__subsection { margin-top: clamp(40px, 5vw, 64px); }
+    .overlay__subsection-title {
+      font-family: var(--font-serif); font-style: italic;
+      font-size: clamp(18px, 2.2vw, 26px);
+      color: var(--charcoal); margin-bottom: 20px;
+    }
+
+    /* Hybrid overlay — before/after pairs */
+    .hybrid-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-bottom: clamp(16px, 2vw, 28px);
+    }Ó
+    .hybrid-pair__img { overflow: hidden; background: #d8d4ce; }
+    .hybrid-pair__img img { width: 100%; height: auto; display: block; }
+    .hybrid-pair__label {
+      font-family: var(--font-sans); font-size: 9px;
+      font-weight: 500; text-transform: uppercase;
+      letter-spacing: 0.14em; color: #444;
+      margin-top: 8px;
+    }
+
+    /* ══════════════════════════════════════════
+       SCROLL REVEAL
+    ══════════════════════════════════════════ */
+    .reveal {
+      opacity: 0; transform: translateY(24px);
+      transition: opacity 700ms cubic-bezier(0.16,1,0.3,1),
+                  transform 700ms cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.is-visible { opacity: 1; transform: none; }
+    .d1 { transition-delay: 60ms; }
+    .d2 { transition-delay: 120ms; }
+    .d3 { transition-delay: 180ms; }
+    .d4 { transition-delay: 240ms; }
+    .d5 { transition-delay: 300ms; }
+
+    /* Hide overlay campaign subtitles */
+    .overlay__subtitle { display: none; }
+
+    /* Portrait image pairs — two side-by-side within image flow */
+    .overlay__image-pair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: clamp(12px, 1.5vw, 20px);
+    }
+
+    .editorial__copy p.about__credentials {
+      font-family: var(--font-serif) !important;
+      font-style: italic !important;
+      font-size: clamp(14px, 1.2vw, 17px) !important;
+      font-weight: 400 !important;
+      color: #888 !important;
+      line-height: 1.5 !important;
+      margin-top: 32px !important;
+      margin-bottom: 32px !important;
+      padding-top: 28px !important;
+      border-top: 1px solid var(--rule) !important;
+    }
+
+    .about__meta-label {
+      font-family: var(--font-sans); font-size: 9px;
+      font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.18em; color: #aaa;
+      margin-top: 20px; margin-bottom: 6px;
+    }
+
+    .about__meta-list {
+      font-family: var(--font-sans); font-size: 13px;
+      font-weight: 300; color: #444; line-height: 1.8;
+      margin-bottom: 0;
+    }
+
+    .about__partnership {
+      font-family: var(--font-sans) !important;
+      font-size: 12px !important;
+      font-weight: 500 !important;
+      text-transform: uppercase !important;
+      letter-spacing: 0.12em !important;
+      color: var(--charcoal) !important;
+      margin-top: 28px !important;
+      padding-top: 24px !important;
+      border-top: 1px solid var(--rule) !important;
+    }
+
+    .contact__success {
+      display: none;
+      font-family: var(--font-sans); font-size: 14px;
+      font-weight: 300; color: var(--charcoal);
+      margin-top: 24px; letter-spacing: 0.02em;
+    }
+@media (max-width: 768px) {
+
+  /* NAV */
+ .nav__logo { font-size: 12px; padding-left: 8px; }
+  .nav__links { gap: 10px; }
+  .nav__link { font-size: 9px; letter-spacing: 0.04em; }
+
+  /* HYBRID — hide images, copy full width */
+  .hybrid__inner { grid-template-columns: 1fr; }
+  .hybrid__images { display: none; }
+
+  /* APPROACH — collapse to single column */
+  .editorial__inner { grid-template-columns: 1fr; }
+  .editorial__inner > div:first-child { display: none; }
+
+  /* ABOUT — stack vertically */
+  .about__inner { grid-template-columns: 1fr; align-items: start; }
+  .about__image { align-self: auto; min-height: unset; height: 320px; }
+  .about__image img { position: absolute; height: 100%; }
+  .about__text { padding-top: 28px; }
+
+  /* CONTACT — stack vertically */
+  .contact__inner { grid-template-columns: 1fr; }
+
+}
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="#" class="nav__logo">ART.DIRECTED.</a>
+    <ul class="nav__links">
+      <li><a class="nav__link" href="#work">Work</a></li>
+      <li><a class="nav__link" href="#hybrid">Hybrid</a></li>
+      <li><a class="nav__link" href="#approach">Approach</a></li>
+      <li><a class="nav__link" href="#about">About</a></li>
+      <li><a class="nav__link" href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <img class="hero__img" src="images/vacanza-2a.jpg" alt="ART.DIRECTED. — Campaign" />
+  </section>
+
+  <!-- INTRO -->
+  <section class="intro" id="introSection">
+    <div class="intro__inner">
+      <p class="intro__tagline">
+        <span class="line-clip"><span class="tl" id="introL1">crafted by humans.</span></span>
+        <span class="line-clip"><span class="tl" id="introL2">executed with AI.</span></span>
+      </p>
+      <span class="sub-clip"><span class="intro__sub"><span class="intro__sub-inner" id="introSub">Campaign imagery built from a single product image — no photoshoot required.</span></span></span>
+    </div>
+  </section>
+
+  <!-- WORK -->
+  <section id="work">
+    <div class="work-header reveal">
+      <h2 class="section-heading">Selected Campaigns</h2>
+    </div>
+    <div class="work-grid">
+      <div class="work-tile reveal d1" onclick="openOverlay('vacanza')">
+        <div class="work-tile__thumb">
+          <img class="work-tile__img" loading="lazy" src="images/vacanza/campaign-3.jpg" alt="Vacanza" />
+        </div>
+        <p class="work-tile__name">Vacanza</p>
+        <p class="work-tile__cat">Fragrance</p>
+      </div>
+      <div class="work-tile reveal d2" onclick="openOverlay('rhino')">
+        <div class="work-tile__thumb">
+          <img class="work-tile__img" loading="lazy" src="images/rhino-thumb.jpg" alt="Rhino Whisky" style="object-position: 85% center;" />
+        </div>
+        <p class="work-tile__name">Rhino Whisky</p>
+        <p class="work-tile__cat">Single Malt Whisky</p>
+      </div>
+      <div class="work-tile reveal d3" onclick="openOverlay('amiri')">
+        <div class="work-tile__thumb">
+          <img class="work-tile__img" loading="lazy" src="images/amiri/AMIRI-1.jpg" alt="Amiri" />
+        </div>
+        <p class="work-tile__name">Amiri</p>
+        <p class="work-tile__cat">Luxury Accessories</p>
+      </div>
+      <div class="work-tile reveal d4" onclick="openOverlay('saltwtr')">
+        <div class="work-tile__thumb">
+          <img class="work-tile__img" loading="lazy" src="images/saltwtr-thumb.jpg" alt="SALTWTR" />
+        </div>
+        <p class="work-tile__name">SALTWTR</p>
+        <p class="work-tile__cat">Sports Nutrition</p>
+      </div>
+      <div class="work-tile reveal d5" onclick="openOverlay('beauty')">
+        <div class="work-tile__thumb">
+          <img class="work-tile__img" loading="lazy" src="images/beauty/aesop-1.jpg" alt="Beauty &amp; Skincare" />
+        </div>
+        <p class="work-tile__name">Beauty &amp; Skincare</p>
+        <p class="work-tile__cat">Selected Clients</p>
+      </div>
+      <div class="work-tile reveal d1" onclick="openOverlay('cadbury')">
+        <div class="work-tile__thumb">
+          <img class="work-tile__img" loading="lazy" src="images/cadbury/cadbury-1.jpg" alt="Cadbury's" />
+        </div>
+        <p class="work-tile__name">Cadbury's</p>
+        <p class="work-tile__cat">Confectionery</p>
+      </div>
+      <div class="work-tile reveal d2" onclick="openOverlay('phillips')">
+        <div class="work-tile__thumb">
+          <img class="work-tile__img" loading="lazy" src="images/phillips/summer.jpg" alt="Philips Airfryer" />
+        </div>
+        <p class="work-tile__name">Philips Airfryer</p>
+        <p class="work-tile__cat">Kitchen Appliances</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- HYBRID PRODUCTION -->
+  <section class="hybrid" id="hybrid">
+    <div class="hybrid__inner">
+      <div class="hybrid__images reveal">
+        <div class="hybrid__img">
+          <img loading="lazy" src="images/hybrid/Portrait_1_STUDIO.jpg" alt="Studio photography" />
+        </div>
+        <div class="hybrid__img">
+          <img loading="lazy" src="images/hybrid/hybrid-final.jpg" alt="Final campaign" />
+        </div>
+      </div>
+      <div class="reveal d2">
+        <h2 class="hybrid__heading">Hybrid Production</h2>
+        <p class="hybrid__standfirst">Real photography. Digital environments.</p>
+        <div class="hybrid__body">
+          <p>For campaigns where casting, performance, and print quality are non-negotiable, studio-photographed hero elements are integrated into art-directed AI environments.</p>
+          <p>This approach combines the control and realism of photography with the flexibility of digitally constructed worlds.</p>
+        </div>
+        <span class="hybrid__cta" onclick="openOverlay('hybrid-process')">View Process →</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- APPROACH -->
+  <section class="editorial" id="approach">
+    <div style="max-width: 680px; margin: 0 auto;">
+      <div class="approach-copy" id="approachCopy">
+        <p class="approach-line approach-line--lead">Every project begins with a conversation, not a prompt.</p>
+        <p class="approach-line approach-line--body">We interpret the brief, develop visual directions, and present campaign mock-ups before production begins.</p>
+        <p class="approach-line approach-line--body">Once a direction is approved, final imagery is produced digitally using the client's product photography as the foundation.</p>
+        <p class="approach-line approach-line--body">The result is campaign imagery developed with the precision of photography and the flexibility of digital production.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="editorial" id="about">
+    <div class="about__inner">
+      <div class="about__image reveal">
+        <img src="brand_assets/Gavin_Goodman_Profile_2.jpg" alt="Gavin Goodman — Photographer & Creative Director" />
+      </div>
+      <div class="about__text reveal d2">
+        <p class="about__lead">ART.DIRECTED. is a creative studio founded by photographer and visual artist Gavin Goodman.</p>
+        <div class="editorial__copy">
+          <p>With more than two decades of experience in advertising, working with many of the world's leading agencies and brands, the studio combines traditional creative direction with AI-driven production to create campaign imagery without a traditional photoshoot. In 2021, Gavin was honoured as a Hasselblad Master in the Fine Art category.</p>
+          <p class="about__meta-label">Selected Agencies</p>
+          <p class="about__meta-list">Ogilvy · McCann · BBDO · TBWA · DDB · Havas · FCB · Y&R · AKQA · David Miami · Hill Holiday · M&C Saatchi Abel</p>
+          <p class="about__meta-label">Selected Clients</p>
+          <p class="about__meta-list">Mercedes · Adidas · Microsoft · Heineken · Volkswagen · Remy Martin · Heinz · Facebook · Ketel One · Old Mutual · Just Eat · Kaufland · Weylandts</p>
+          <p class="about__partnership">Developed in partnership with Club10 London.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="contact" id="contact">
+    <div class="contact__inner">
+      <div class="reveal">
+        <h2 class="contact__heading">Contact</h2>
+        <div class="contact__info-row">
+          <p class="contact__info-label">Email</p>
+          <p class="contact__info-value">hello@art-directed.com</p>
+        </div>
+        <div class="contact__info-row">
+          <p class="contact__info-label">Representation</p>
+          <p class="contact__info-value">Club 10 — London</p>
+        </div>
+      </div>
+      <form class="contact-form reveal d2" id="contactForm" method="POST" action="https://formspree.io/f/YOUR_FORM_ID">
+        <div class="form-row">
+          <label for="cName">Name</label>
+          <input type="text" id="cName" name="name" autocomplete="name" />
+        </div>
+        <div class="form-row">
+          <label for="cEmail">Email</label>
+          <input type="email" id="cEmail" name="email" autocomplete="email" />
+        </div>
+        <div class="form-row">
+          <label for="cMsg">Message</label>
+          <textarea id="cMsg" name="message"></textarea>
+        </div>
+        <button type="submit" class="btn-enquiry">Send Enquiry</button>
+      </form>
+      <p class="contact__success" id="contactSuccess">Thank you — we'll be in touch.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer__brand">ART.DIRECTED.</span>
+    <span class="footer__copy">© 2026</span>
+  </footer>
+
+  <!-- ══════════════════════════════════════════
+       OVERLAYS
+  ══════════════════════════════════════════ -->
+
+  <!-- VACANZA -->
+  <div class="overlay" id="overlay-vacanza">
+    <nav class="overlay__topbar">
+      <button class="overlay__close-btn" onclick="closeOverlay('vacanza')"><span>✕</span><span>Close</span></button>
+    </nav>
+    <div class="overlay__content">
+      <div class="overlay__header">
+        <h2 class="overlay__title">Vacanza — Fragrance</h2>
+        <p class="overlay__subtitle">Concept Campaign</p>
+      </div>
+
+      <p class="overlay__row-label">Client product imagery</p>
+      <div class="overlay__product-row overlay__product-row--1">
+        <div class="overlay__product-cell">
+          <img loading="lazy" src="images/vacanza/product-ref.jpg" alt="Vacanza product" />
+        </div>
+      </div>
+      <p class="overlay__row-caption">Client product imagery supplied as reference for campaign development.</p>
+
+      <p class="overlay__row-label">Campaign imagery</p>
+      <div class="overlay__images">
+        <div class="overlay__image">
+          <img loading="lazy" src="images/vacanza/campaign-2.jpg" alt="Vacanza campaign" />
+        </div>
+        <div class="overlay__image">
+          <img loading="lazy" src="images/vacanza/campaign-3.jpg" alt="Vacanza campaign" />
+        </div>
+        <div class="overlay__image">
+          <img loading="lazy" src="images/vacanza/campaign-4.jpg" alt="Vacanza campaign" />
+        </div>
+        <div class="overlay__image-pair">
+          <div class="overlay__image"><img loading="lazy" src="images/vacanza/campaign-5.jpg" alt="Vacanza campaign" /></div>
+          <div class="overlay__image"><img loading="lazy" src="images/vacanza/campaign-6.jpg" alt="Vacanza campaign" /></div>
+        </div>
+      </div>
+
+      <div class="overlay__footer-text">
+        <p>Styled studio and location product imagery inspired by the Mediterranean character of the fragrance.</p>
+        <p>The campaign draws from the scent's citrus profile, incorporating elements such as orange rind, sunlit surfaces, and Mediterranean textures to create a warm, atmospheric setting.</p>
+        <p>The result is a series of campaign visuals that translate the fragrance's ingredients and mood into a visual environment.</p>
+      </div>
+      <div class="overlay__next-row">
+        <span class="overlay__next-label">Next Project</span>
+        <span class="overlay__next-link" onclick="switchOverlay('vacanza','rhino')">Rhino Whisky →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- RHINO WHISKY -->
+  <div class="overlay" id="overlay-rhino">
+    <nav class="overlay__topbar">
+      <button class="overlay__close-btn" onclick="closeOverlay('rhino')"><span>✕</span><span>Close</span></button>
+    </nav>
+    <div class="overlay__content">
+      <div class="overlay__header">
+        <h2 class="overlay__title">Rhino Whisky — Single Malt Whisky</h2>
+        <p class="overlay__subtitle">Commissioned Campaign</p>
+      </div>
+
+      <p class="overlay__row-label">Client product imagery</p>
+      <div class="overlay__product-row overlay__product-row--1">
+        <div class="overlay__product-cell">
+          <img loading="lazy" src="images/rhino/product-ref.jpg" alt="Rhino Whisky bottle" />
+        </div>
+      </div>
+      <p class="overlay__row-caption">Client product imagery supplied as reference for campaign development.</p>
+
+      <p class="overlay__row-label">Campaign imagery</p>
+      <div class="overlay__images">
+        <div class="overlay__image">
+          <img loading="lazy" src="images/rhino/campaign-1.jpg" alt="Rhino Whisky campaign" />
+        </div>
+        <div class="overlay__image">
+          <img loading="lazy" src="images/rhino/campaign-2.jpg" alt="Rhino Whisky campaign" />
+        </div>
+        <div class="overlay__image">
+          <img loading="lazy" src="images/rhino/campaign-3.jpg" alt="Rhino Whisky campaign" />
+        </div>
+        <div class="overlay__image">
+          <img loading="lazy" src="images/rhino/campaign-4.jpg" alt="Rhino Whisky campaign" />
+        </div>
+      </div>
+
+      <div class="overlay__footer-text">
+        <p>The client supplied a single product render as the reference input.</p>
+        <p>Using this reference, the campaign visuals were developed to evoke the character of a premium single malt whisky, with environments inspired by natural materials, craftsmanship, and heritage.</p>
+        <p>The result is a series of atmospheric visuals built from the supplied product imagery.</p>
+      </div>
+      <div class="overlay__next-row">
+        <span class="overlay__next-label">Next Project</span>
+        <span class="overlay__next-link" onclick="switchOverlay('rhino','amiri')">Amiri →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- AMIRI -->
+  <div class="overlay" id="overlay-amiri">
+    <nav class="overlay__topbar">
+      <button class="overlay__close-btn" onclick="closeOverlay('amiri')"><span>✕</span><span>Close</span></button>
+    </nav>
+    <div class="overlay__content">
+      <div class="overlay__header">
+        <h2 class="overlay__title">Amiri — Luxury Accessories</h2>
+        <p class="overlay__subtitle">Commissioned Campaign</p>
+      </div>
+
+      <p class="overlay__row-label">Campaign imagery</p>
+      <div class="overlay__images">
+        <div class="overlay__image-pair">
+          <div class="overlay__image"><img loading="lazy" src="images/amiri/AMIRI-1.jpg" alt="Amiri campaign" /></div>
+          <div class="overlay__image"><img loading="lazy" src="images/amiri/AMIRI-2.jpg" alt="Amiri campaign" /></div>
+        </div>
+        <div class="overlay__image">
+          <img loading="lazy" src="images/amiri/AMIRI-3.jpg" alt="Amiri campaign" />
+        </div>
+      </div>
+
+      <div class="overlay__footer-text">
+        <p>Commissioned by the Los Angeles–based fashion house Amiri.</p>
+        <p>The campaign builds on the brand's contemporary jazz-inspired lifestyle direction, incorporating elements associated with that theme, including vintage speakers, studio equipment, and a palette drawn from the brand's visual identity.</p>
+        <p>These elements create a curated environment that positions the handbags within the atmosphere of the wider Amiri campaign.</p>
+      </div>
+      <div class="overlay__next-row">
+        <span class="overlay__next-label">Next Project</span>
+        <span class="overlay__next-link" onclick="switchOverlay('amiri','saltwtr')">SALTWTR →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- SALTWTR -->
+  <div class="overlay" id="overlay-saltwtr">
+    <nav class="overlay__topbar">
+      <button class="overlay__close-btn" onclick="closeOverlay('saltwtr')"><span>✕</span><span>Close</span></button>
+    </nav>
+    <div class="overlay__content">
+      <div class="overlay__header">
+        <h2 class="overlay__title">SALTWTR — Sports Nutrition</h2>
+        <p class="overlay__subtitle">Commissioned Campaign</p>
+      </div>
+
+      <!-- Berry -->
+      <div class="overlay__subsection" style="margin-top:0">
+        <h3 class="overlay__subsection-title">Berry</h3>
+        <p class="overlay__row-label">Client product imagery</p>
+        <div class="overlay__product-row overlay__product-row--1">
+          <div class="overlay__product-cell">
+            <img loading="lazy" src="images/saltwtr/berry-product.jpg" alt="SALTWTR Berry product" />
+          </div>
+        </div>
+        <p class="overlay__row-caption">Client product imagery supplied as reference for campaign development.</p>
+        <p class="overlay__row-label">Campaign imagery</p>
+        <div class="overlay__images">
+          <div class="overlay__image-pair">
+            <div class="overlay__image"><img loading="lazy" src="images/saltwtr/berry-1.jpg" alt="SALTWTR Berry campaign" /></div>
+            <div class="overlay__image"><img loading="lazy" src="images/saltwtr/berry-2.jpg" alt="SALTWTR Berry campaign" /></div>
+          </div>
+          <div class="overlay__image-pair">
+            <div class="overlay__image"><img loading="lazy" src="images/saltwtr/berry-3.jpg" alt="SALTWTR Berry campaign" /></div>
+            <div class="overlay__image"><img loading="lazy" src="images/saltwtr/berry-3a.jpg" alt="SALTWTR Berry campaign" /></div>
+          </div>
+          <div class="overlay__image"><img loading="lazy" src="images/saltwtr/berry-4.jpg" alt="SALTWTR Berry campaign" /></div>
+        </div>
+      </div>
+
+      <!-- Lemon -->
+      <div class="overlay__subsection">
+        <h3 class="overlay__subsection-title">Lemon</h3>
+        <p class="overlay__row-label">Client product imagery</p>
+        <div class="overlay__product-row overlay__product-row--1">
+          <div class="overlay__product-cell">
+            <img loading="lazy" src="images/saltwtr/lemon-product.jpg" alt="SALTWTR Lemon product" />
+          </div>
+        </div>
+        <p class="overlay__row-caption">Client product imagery supplied as reference for campaign development.</p>
+        <p class="overlay__row-label">Campaign imagery</p>
+        <div class="overlay__images">
+          <div class="overlay__image-pair">
+            <div class="overlay__image"><img loading="lazy" src="images/saltwtr/lemon-1.jpg" alt="SALTWTR Lemon campaign" /></div>
+            <div class="overlay__image"><img loading="lazy" src="images/saltwtr/lemon-2.jpg" alt="SALTWTR Lemon campaign" /></div>
+          </div>
+          <div class="overlay__image-pair">
+            <div class="overlay__image"><img loading="lazy" src="images/saltwtr/lemon-3.jpg" alt="SALTWTR Lemon campaign" /></div>
+            <div class="overlay__image"><img loading="lazy" src="images/saltwtr/lemon-4.jpg" alt="SALTWTR Lemon campaign" /></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="overlay__footer-text">
+        <p>Campaign imagery developed for the SALTWTR hydration brand.</p>
+        <p>The visual direction explores environments associated with endurance, movement, and outdoor performance, positioning the product within a contemporary sports context.</p>
+        <p>Each visual places the product within settings that reflect the brand's focus on hydration, energy, and athletic performance.</p>
+      </div>
+      <div class="overlay__next-row">
+        <span class="overlay__next-label">Next Project</span>
+        <span class="overlay__next-link" onclick="switchOverlay('saltwtr','beauty')">Beauty &amp; Skincare →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BEAUTY & SKINCARE -->
+  <div class="overlay" id="overlay-beauty">
+    <nav class="overlay__topbar">
+      <button class="overlay__close-btn" onclick="closeOverlay('beauty')"><span>✕</span><span>Close</span></button>
+    </nav>
+    <div class="overlay__content">
+      <div class="overlay__header">
+        <h2 class="overlay__title">Beauty &amp; Skincare</h2>
+        <p class="overlay__subtitle">Selected Client Work</p>
+      </div>
+
+      <p class="overlay__row-label">Selected work</p>
+      <div class="overlay__images">
+        <div class="overlay__image"><img loading="lazy" src="images/beauty-thumb.jpg" alt="Beauty &amp; Skincare campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/beauty/campaign-2.jpg" alt="Beauty &amp; Skincare campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/beauty/campaign-3.jpg" alt="Beauty &amp; Skincare campaign" /></div>
+        <div class="overlay__image-pair">
+          <div class="overlay__image"><img loading="lazy" src="images/beauty/aesop-1.jpg" alt="Aesop campaign" /></div>
+          <div class="overlay__image"><img loading="lazy" src="images/beauty/aesop-2.jpg" alt="Aesop campaign" /></div>
+        </div>
+      </div>
+
+      <div class="overlay__footer-text">
+        <p>Campaign imagery created for multiple beauty and skincare clients.</p>
+        <p>Each campaign begins with client-supplied product imagery and develops it into a set of atmospheric visuals tailored to the character of the brand.</p>
+        <p>These campaigns demonstrate how beauty and skincare products can be placed into fully realised visual environments without the need for a traditional studio shoot.</p>
+      </div>
+      <div class="overlay__next-row">
+        <span class="overlay__next-label">Next Project</span>
+        <span class="overlay__next-link" onclick="switchOverlay('beauty','cadbury')">Cadbury's →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- CADBURY'S -->
+  <div class="overlay" id="overlay-cadbury">
+    <nav class="overlay__topbar">
+      <button class="overlay__close-btn" onclick="closeOverlay('cadbury')"><span>✕</span><span>Close</span></button>
+    </nav>
+    <div class="overlay__content">
+      <div class="overlay__header">
+        <h2 class="overlay__title">Cadbury's — Confectionery</h2>
+        <p class="overlay__subtitle">Concept Campaign</p>
+      </div>
+
+      <p class="overlay__row-label">Campaign imagery</p>
+      <div class="overlay__images">
+        <div class="overlay__image"><img loading="lazy" src="images/cadbury/cadbury-1.jpg" alt="Cadbury's campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/cadbury/cadbury-2.jpg" alt="Cadbury's campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/cadbury/cadbury-4.jpg" alt="Cadbury's campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/cadbury/cadbury-5.jpg" alt="Cadbury's campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/cadbury/cadbury-6.jpg" alt="Cadbury's campaign" /></div>
+      </div>
+
+      <p class="overlay__row-label" style="margin-top: clamp(28px,3.5vw,44px);">Motion</p>
+      <div class="overlay__images">
+        <div class="overlay__image">
+          <video class="overlay__video" loading="lazy" src="images/cadbury/motion-1.mp4" controls playsinline preload="none"></video>
+        </div>
+        <div class="overlay__image">
+          <video class="overlay__video" loading="lazy" src="images/cadbury/motion-3.mp4" controls playsinline preload="none"></video>
+        </div>
+      </div>
+
+      <div class="overlay__footer-text">
+        <p>Concept campaign imagery and motion content for Cadbury's, exploring the visual language of indulgence, texture, and colour.</p>
+        <p>Campaign environments developed digitally to position the product within rich, tactile settings that amplify the character of the brand.</p>
+      </div>
+      <div class="overlay__next-row">
+        <span class="overlay__next-label">Next Project</span>
+        <span class="overlay__next-link" onclick="switchOverlay('cadbury','phillips')">Philips Airfryer →</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- PHILIPS AIRFRYER -->
+  <div class="overlay" id="overlay-phillips">
+    <nav class="overlay__topbar">
+      <button class="overlay__close-btn" onclick="closeOverlay('phillips')"><span>✕</span><span>Close</span></button>
+    </nav>
+    <div class="overlay__content">
+      <div class="overlay__header">
+        <h2 class="overlay__title">Philips Airfryer — Kitchen Appliances</h2>
+        <p class="overlay__subtitle">Concept Campaign</p>
+      </div>
+
+      <p class="overlay__row-label">Client product imagery</p>
+      <div class="overlay__product-row overlay__product-row--1">
+        <div class="overlay__product-cell">
+          <img loading="lazy" src="images/phillips/product.jpg" alt="Philips Airfryer product" />
+        </div>
+      </div>
+      <p class="overlay__row-caption">Client product imagery supplied as reference for campaign development.</p>
+
+      <p class="overlay__row-label">Campaign imagery</p>
+      <div class="overlay__images">
+        <div class="overlay__image"><img loading="lazy" src="images/phillips/summer.jpg" alt="Summer campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/phillips/autumn.jpg" alt="Autumn campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/phillips/winter.jpg" alt="Winter campaign" /></div>
+        <div class="overlay__image"><img loading="lazy" src="images/phillips/spring.jpg" alt="Spring campaign" /></div>
+      </div>
+
+      <div class="overlay__footer-text">
+        <p>A seasonal campaign concept for the Philips Airfryer, developing a distinct visual identity for each season of the year.</p>
+        <p>Each environment is constructed digitally using the client's product imagery as the foundation, placing the appliance within seasonal settings that speak to home cooking and everyday ritual.</p>
+      </div>
+      <div class="overlay__next-row">
+        <span class="overlay__next-label">Next Project</span>
+        <span class="overlay__next-link" onclick="switchOverlay('phillips','vacanza')">Vacanza →</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- HYBRID PROCESS GALLERY -->
+  <div class="overlay" id="overlay-hybrid-process">
+    <nav class="overlay__topbar">
+      <button class="overlay__close-btn" onclick="closeOverlay('hybrid-process')"><span>✕</span><span>Close</span></button>
+    </nav>
+    <div class="overlay__content">
+      <div class="overlay__header">
+        <h2 class="overlay__title">Hybrid Production</h2>
+        <p class="overlay__subtitle">Studio Photography · Digital Environments</p>
+      </div>
+
+      <p class="overlay__row-label">Studio → Campaign</p>
+
+      <div class="hybrid-pair">
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/Portrait_1_STUDIO.jpg" alt="Studio" /></div>
+          <p class="hybrid-pair__label">Talent photographed in studio.</p>
+        </div>
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/hybrid-final.jpg" alt="Campaign" /></div>
+          <p class="hybrid-pair__label">Environment created with AI.</p>
+        </div>
+      </div>
+
+      <div class="hybrid-pair">
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/Portrait_2_STUDIO.jpg" alt="Studio" /></div>
+          <p class="hybrid-pair__label">Talent photographed in studio.</p>
+        </div>
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/Portrait_2_FInal.jpg" alt="Campaign" /></div>
+          <p class="hybrid-pair__label">Environment created with AI.</p>
+        </div>
+      </div>
+
+      <div class="hybrid-pair">
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/Shot-2_STUDIO.jpg" alt="Studio" /></div>
+          <p class="hybrid-pair__label">Talent photographed in studio.</p>
+        </div>
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/Shot-2_FINAL.jpg" alt="Campaign" /></div>
+          <p class="hybrid-pair__label">Environment created with AI.</p>
+        </div>
+      </div>
+
+      <div class="hybrid-pair">
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/shot3_STUDIO.jpg" alt="Studio" /></div>
+          <p class="hybrid-pair__label">Talent photographed in studio.</p>
+        </div>
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/shot3_FINAL.jpg" alt="Campaign" /></div>
+          <p class="hybrid-pair__label">Environment created with AI.</p>
+        </div>
+      </div>
+
+      <div class="hybrid-pair" style="margin-top: clamp(40px,5vw,72px);">
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/powrjgjw.jpg" alt="Studio" /></div>
+          <p class="hybrid-pair__label">Talent photographed in studio.</p>
+        </div>
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/porwjgw.jpg" alt="Campaign" /></div>
+          <p class="hybrid-pair__label">Environment created with AI.</p>
+        </div>
+      </div>
+
+      <div class="hybrid-pair" style="margin-top: clamp(40px,5vw,72px);">
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/hybrid-3a.jpg" alt="Studio" /></div>
+          <p class="hybrid-pair__label">Talent photographed in studio.</p>
+        </div>
+        <div>
+          <div class="hybrid-pair__img"><img loading="lazy" src="images/hybrid/4a.jpg" alt="Campaign" /></div>
+          <p class="hybrid-pair__label">Environment created with AI.</p>
+        </div>
+      </div>
+
+      <p class="overlay__row-label" style="margin-top: clamp(40px,5vw,72px);">Additional campaign images</p>
+      <div class="overlay__images">
+        <div class="overlay__image overlay__image--portrait">
+          <img loading="lazy" src="images/hybrid/4c.jpg" alt="Campaign" />
+        </div>
+        <div class="overlay__image overlay__image--portrait">
+          <img loading="lazy" src="images/hybrid/4d.jpg" alt="Campaign" />
+        </div>
+      </div>
+
+      <div class="overlay__back-home" onclick="closeOverlay('hybrid-process')">
+        <span>Back to home</span>
+      </div>
+
+    </div>
+  </div>
+
+  <script>
+    // ── Intro blur-word animation ─────────────
+    function wrapWordsBlur(el) {
+      const words = el.textContent.trim().split(/\s+/);
+      el.innerHTML = words.map(w => `<span class="blur-word">${w}</span>`).join(' ');
+      return el.querySelectorAll('.blur-word');
+    }
+
+    const introSection = document.getElementById('introSection');
+
+    const introObs = new IntersectionObserver((entries) => {
+      if (!entries[0].isIntersecting) return;
+
+      const l1El = document.getElementById('introL1');
+      const l2El = document.getElementById('introL2');
+      const subEl = document.getElementById('introSub');
+
+      const l1Words = wrapWordsBlur(l1El);
+      const l2Words = wrapWordsBlur(l2El);
+      const subWords = wrapWordsBlur(subEl);
+
+      let d = 0;
+      l1Words.forEach(w => { w.style.transitionDelay = d.toFixed(2) + 's'; d += 0.10; });
+      d += 0.18;
+      l2Words.forEach(w => { w.style.transitionDelay = d.toFixed(2) + 's'; d += 0.10; });
+      d += 0.42;
+      subWords.forEach(w => { w.style.transitionDelay = d.toFixed(2) + 's'; d += 0.055; });
+
+      requestAnimationFrame(() => requestAnimationFrame(() => {
+        [...l1Words, ...l2Words, ...subWords].forEach(w => w.classList.add('is-visible'));
+      }));
+
+      introObs.unobserve(introSection);
+    }, { threshold: 0.15 });
+    introObs.observe(introSection);
+
+    // ── Approach lines animation ──────────────
+    const approachCopy = document.getElementById('approachCopy');
+    if (approachCopy) {
+      const approachObs = new IntersectionObserver((entries) => {
+        if (!entries[0].isIntersecting) return;
+        approachCopy.querySelectorAll('.approach-line').forEach(el => el.classList.add('is-visible'));
+        approachObs.unobserve(approachCopy);
+      }, { threshold: 0.15 });
+      approachObs.observe(approachCopy);
+    }
+
+    // ── Scroll reveal ─────────────────────────
+    const revealObs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('is-visible');
+          revealObs.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // ── Overlays ──────────────────────────────
+    function openOverlay(id) {
+      const el = document.getElementById('overlay-' + id);
+      if (!el) return;
+      el.scrollTop = 0;
+      el.classList.add('is-open');
+      document.body.style.overflow = 'hidden';
+    }
+    function closeOverlay(id) {
+      const el = document.getElementById('overlay-' + id);
+      if (!el) return;
+      el.classList.remove('is-open');
+      document.body.style.overflow = '';
+    }
+    function switchOverlay(fromId, toId) {
+      closeOverlay(fromId);
+      setTimeout(() => openOverlay(toId), 350);
+    }
+    document.addEventListener('keydown', e => {
+      if (e.key !== 'Escape') return;
+      document.querySelectorAll('.overlay.is-open').forEach(el => el.classList.remove('is-open'));
+      document.body.style.overflow = '';
+    });
+
+    // ── Contact form ──────────────────────────
+    const contactForm = document.getElementById('contactForm');
+    const contactSuccess = document.getElementById('contactSuccess');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const data = new FormData(contactForm);
+        const res = await fetch(contactForm.action, {
+          method: 'POST', body: data,
+          headers: { 'Accept': 'application/json' }
+        });
+        if (res.ok) {
+          contactForm.style.display = 'none';
+          contactSuccess.style.display = 'block';
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
