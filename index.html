@@ -37,6 +37,7 @@
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
+    body.no-scroll { overflow: hidden; }
 
     /* ══════════════════════════════════════════
        NAV
@@ -1397,13 +1398,13 @@
       el.scrollTop = 0;
       el.classList.add('is-open');
       history.pushState({ overlay: id }, '', '#' + id);
-      document.body.style.overflow = 'hidden';
+      document.body.classList.add('no-scroll');
     }
     function closeOverlay(id) {
       const el = document.getElementById('overlay-' + id);
       if (!el) return;
       el.classList.remove('is-open');
-      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
       if (location.hash) history.pushState({}, '', ' ');
     }
     function switchOverlay(fromId, toId) {
@@ -1413,14 +1414,14 @@
     document.addEventListener('keydown', e => {
       if (e.key !== 'Escape') return;
       document.querySelectorAll('.overlay.is-open').forEach(el => el.classList.remove('is-open'));
-      document.body.style.overflow = '';
+      document.body.classList.remove('no-scroll');
       if (location.hash) history.pushState({}, '', ' ');
     });
     window.addEventListener('popstate', function() {
       const openOverlay = document.querySelector('.overlay.is-open');
       if (openOverlay) {
         openOverlay.classList.remove('is-open');
-        document.body.style.overflow = '';
+        document.body.classList.remove('no-scroll');
       }
     });
     window.addEventListener('DOMContentLoaded', function() {
