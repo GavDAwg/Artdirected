@@ -1385,6 +1385,7 @@
       });
       el.scrollTop = 0;
       el.classList.add('is-open');
+      history.pushState({ overlay: id }, '', '#' + id);
       document.body.style.overflow = 'hidden';
     }
     function closeOverlay(id) {
@@ -1392,6 +1393,7 @@
       if (!el) return;
       el.classList.remove('is-open');
       document.body.style.overflow = '';
+      if (location.hash) history.pushState({}, '', ' ');
     }
     function switchOverlay(fromId, toId) {
       closeOverlay(fromId);
@@ -1401,6 +1403,21 @@
       if (e.key !== 'Escape') return;
       document.querySelectorAll('.overlay.is-open').forEach(el => el.classList.remove('is-open'));
       document.body.style.overflow = '';
+      if (location.hash) history.pushState({}, '', ' ');
+    });
+    window.addEventListener('popstate', function() {
+      const openOverlay = document.querySelector('.overlay.is-open');
+      if (openOverlay) {
+        openOverlay.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+    });
+    window.addEventListener('DOMContentLoaded', function() {
+      if (location.hash) {
+        const id = location.hash.replace('#', '');
+        const el = document.getElementById('overlay-' + id);
+        if (el) openOverlay(id);
+      }
     });
 
     // ── Contact form ──────────────────────────
