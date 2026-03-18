@@ -70,11 +70,11 @@
     }
     .nav__link {
       font-family: var(--font-sans);
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 500;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--charcoal);
+      letter-spacing: 0.12em;
+      color: #3D3935;
       transition: opacity 200ms ease;
     }
     .nav__link:hover { opacity: 0.38; }
@@ -129,7 +129,7 @@
       font-family: var(--font-sans);
       font-size: clamp(14px, 1.5vw, 18px);
       font-weight: 400;
-      color: var(--charcoal);
+      color: #2A2724;
       line-height: 1.4;
     }
     .intro__sub-inner { display: block; }
@@ -147,7 +147,7 @@
       transform: translateY(0);
     }
     /* Sub line words slightly dimmer */
-    .intro__sub .blur-word.is-visible { opacity: 0.72; }
+    .intro__sub .blur-word.is-visible { opacity: 0.88; }
 
     /* ══════════════════════════════════════════
        WORK
@@ -208,13 +208,13 @@
     .work-tile:hover .work-tile__fill { transform: scale(1.03); }
     .work-tile__name {
       font-family: var(--font-sans); font-weight: 400;
-      font-size: 20px; color: var(--charcoal);
-      line-height: 1.2; margin-bottom: 5px;
+      font-size: 18px; color: var(--charcoal);
+      line-height: 1.2; margin-bottom: 4px;
     }
     .work-tile__cat {
-      font-family: var(--font-sans); font-size: 13px;
-      font-weight: 400; color: var(--charcoal);
-      opacity: 0.55;
+      font-family: var(--font-sans); font-size: 12px;
+      font-weight: 400; color: #6F6A64;
+      opacity: 1;
     }
 
     /* ══════════════════════════════════════════
@@ -258,7 +258,7 @@
     }
     .hybrid__body {
       font-family: var(--font-sans); font-size: 15px;
-      font-weight: 300; color: rgba(255,255,255,0.85);
+      font-weight: 400; color: rgba(255,255,255,0.85);
       line-height: 1.8;
       margin-bottom: 28px;
     }
@@ -317,16 +317,16 @@
     }
     .editorial__copy p {
       font-family: var(--font-sans); font-size: 15px;
-      font-weight: 300; line-height: 1.7; color: #111;
-      margin-bottom: 8px;
+      font-weight: 400; line-height: 1.7; color: #1A1816;
+      margin-bottom: 14px; max-width: 56ch;
     }
 
     /* About lead sentence */
     .about__lead {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(15px, 1.3vw, 18px);
+      font-size: clamp(18px, 1.45vw, 22px);
       color: var(--charcoal); line-height: 1.6;
-      margin-bottom: 28px;
+      margin-bottom: 22px; max-width: 30ch;
     }
 
     /* ── Approach animated copy ─────────────── */
@@ -384,7 +384,7 @@
     }
     .contact__info-value {
       font-family: var(--font-sans); font-size: 14px;
-      font-weight: 300; color: rgba(255,255,255,0.6);
+      font-weight: 400; color: rgba(255,255,255,0.74);
     }
     .contact-form { display: flex; flex-direction: column; gap: 28px; }
     .form-row { display: flex; flex-direction: column; gap: 8px; }
@@ -396,8 +396,8 @@
     .form-row input, .form-row textarea {
       background: transparent; border: none;
       border-bottom: 1px solid rgba(255,255,255,0.16);
-      color: #fff; font-family: var(--font-sans);
-      font-size: 14px; font-weight: 300;
+      color: #F7F5F2; font-family: var(--font-sans);
+      font-size: 14px; font-weight: 400;
       padding: 10px 0; outline: none;
       -webkit-appearance: none;
       transition: border-color 300ms ease;
@@ -451,56 +451,33 @@
     .d4 { transition-delay: 240ms; }
     .d5 { transition-delay: 300ms; }
 
-    .editorial__copy p.about__credentials {
-      font-family: var(--font-serif) !important;
-      font-style: italic !important;
-      font-size: clamp(14px, 1.2vw, 17px) !important;
-      font-weight: 400 !important;
-      color: #888 !important;
-      line-height: 1.5 !important;
-      margin-top: 32px !important;
-      margin-bottom: 32px !important;
-      padding-top: 28px !important;
-      border-top: 1px solid var(--rule) !important;
-    }
-
-    .about__meta-label {
-      font-family: var(--font-sans); font-size: 9px;
-      font-weight: 700; text-transform: uppercase;
-      letter-spacing: 0.18em; color: #aaa;
-      margin-top: 20px; margin-bottom: 6px;
-    }
-
-    .about__meta-list {
-      font-family: var(--font-sans); font-size: 13px;
-      font-weight: 300; color: #444; line-height: 1.8;
-      margin-bottom: 0;
-    }
+    .about__credentials,
+    .about__meta-label,
+    .about__meta-list { display: none; }
 
     .about__partnership {
       font-family: var(--font-sans) !important;
-      font-size: 12px !important;
+      font-size: 11px !important;
       font-weight: 500 !important;
       text-transform: uppercase !important;
-      letter-spacing: 0.12em !important;
-      color: var(--charcoal) !important;
+      letter-spacing: 0.10em !important;
+      color: #5B5650 !important;
       margin-top: 28px !important;
-      padding-top: 24px !important;
+      padding-top: 20px !important;
       border-top: 1px solid var(--rule) !important;
     }
     .about__partnership a {
-      color: inherit;
+      color: #2F2B27;
       text-decoration: none;
     }
     .about__partnership a:hover {
       color: #4A7FA5;
-      text-decoration: none;
     }
 
     .contact__success {
       display: none;
       font-family: var(--font-sans); font-size: 14px;
-      font-weight: 300; color: var(--charcoal);
+      font-weight: 400; color: var(--charcoal);
       margin-top: 24px; letter-spacing: 0.02em;
     }
 @media (max-width: 768px) {
@@ -660,13 +637,10 @@
         <img src="images/Gavin_Goodman_Profile_3.jpg" alt="Gavin Goodman — Photographer & Creative Director" />
       </div>
       <div class="about__text reveal d2">
-        <p class="about__lead">ART.DIRECTED. is a creative studio founded by photographer and visual artist Gavin Goodman.</p>
+        <p class="about__lead">ART.DIRECTED. is a creative studio founded by Gavin Goodman, photographer and visual artist.</p>
         <div class="editorial__copy">
-          <p>With more than two decades of experience in advertising, working with many of the world's leading agencies and brands, the studio combines traditional creative direction with AI-driven production to create campaign imagery without a traditional photoshoot. In 2021, Gavin was honoured as a Hasselblad Master in the Fine Art category.</p>
-          <p class="about__meta-label">Selected Agencies</p>
-          <p class="about__meta-list">Ogilvy · McCann · BBDO · TBWA · DDB · AKQA</p>
-          <p class="about__meta-label">Selected Clients</p>
-          <p class="about__meta-list">Mercedes · Adidas · Microsoft · Heineken · Volkswagen · Remy Martin</p>
+          <p>A Hasselblad Master with over two decades in advertising, Gavin has worked with leading agencies and global brands including Ogilvy, McCann, TBWA, Mercedes, Adidas, Microsoft and Heineken.</p>
+          <p>The studio combines creative direction with AI-driven production to create campaign imagery without a traditional photoshoot.</p>
           <p class="about__partnership">Developed in partnership with <a href="https://club10.co/" target="_blank">Club 10</a> and <a href="https://gavingoodman.com" target="_blank">Gavin Goodman</a>.</p>
         </div>
       </div>
