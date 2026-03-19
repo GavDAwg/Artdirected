@@ -42,7 +42,7 @@
     .overlay__subtitle { font-family: var(--font-sans); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.13em; color: var(--warm-grey); }
     .overlay__row-label { font-family: var(--font-sans); font-size: 10px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.17em; color: #555; margin-bottom: 16px; text-align: center; }
     .overlay__images { display: flex; flex-direction: column; gap: clamp(16px, 2vw, 28px); margin-bottom: clamp(44px, 5.5vw, 80px); }
-    .overlay__image { width: 100%; overflow: hidden; background: #d8d4ce; }
+    .overlay__image { width: 100%; overflow: hidden; background: #d8d4ce; line-height: 0; }
     .overlay__image img { width: 100%; height: auto; display: block; }
     .overlay__video { width: 100%; display: block; background: #111; outline: none; }
     .overlay__footer-text { font-family: var(--font-sans); font-size: 15px; font-weight: 300; line-height: 1.8; color: #2a2a2a; max-width: 640px; margin-left: auto; margin-right: auto; text-align: center; text-wrap: balance; padding-top: clamp(28px, 3.5vw, 44px); border-top: 1px solid var(--rule); margin-bottom: clamp(52px, 6.5vw, 88px); }
@@ -88,10 +88,10 @@
     <p class="overlay__row-label" style="margin-top: clamp(28px,3.5vw,44px);">Motion</p>
     <div class="overlay__images">
       <div class="overlay__image">
-        <video class="overlay__video" src="images/cadbury/motion-1.mp4" poster="images/cadbury/cadbury-4.jpg" controls playsinline preload="none" style="width:100%; display:block;"></video>
+        <video class="overlay__video" src="images/cadbury/motion-1.mp4" poster="images/cadbury/cadbury-4.jpg" controls playsinline preload="none" style="width:100%; display:block; vertical-align:top;"></video>
       </div>
       <div class="overlay__image">
-        <video class="overlay__video" src="images/cadbury/motion-3.mp4" poster="images/cadbury/motion-3-poster.jpg" controls playsinline preload="none" style="width:100%; display:block;"></video>
+        <video class="overlay__video" src="images/cadbury/motion-3.mp4" poster="images/cadbury/motion-3-poster.jpg" controls playsinline preload="none" style="width:100%; display:block; vertical-align:top;"></video>
       </div>
     </div>
     <div class="overlay__footer-text">
