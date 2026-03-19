@@ -362,7 +362,7 @@
     ══════════════════════════════════════════ */
     .contact {
       background: var(--charcoal);
-      padding: clamp(64px, 8vw, 112px) var(--pad);
+      padding: clamp(52px, 6.5vw, 90px) var(--pad);
     }
     .contact__inner {
       display: grid;
@@ -403,7 +403,14 @@
       transition: border-color 300ms ease;
     }
     .form-row input:focus, .form-row textarea:focus { border-bottom-color: rgba(255,255,255,0.5); }
-    .form-row textarea { resize: none; height: 88px; }
+    .form-row textarea { resize: none; height: 88px; padding: 10px 0; }
+    .form-row input:-webkit-autofill,
+    .form-row input:-webkit-autofill:hover,
+    .form-row input:-webkit-autofill:focus {
+      -webkit-box-shadow: 0 0 0px 1000px #111111 inset;
+      -webkit-text-fill-color: #fff;
+      transition: background-color 5000s ease-in-out 0s;
+    }
     .btn-enquiry {
       align-self: flex-start;
       font-family: var(--font-sans); font-size: 11px;
@@ -477,6 +484,8 @@
     #contactSuccess {
       border-top: 1px solid rgba(255,255,255,0.15);
       padding-top: 24px;
+    }
+    #contactSuccess.is-shown {
       animation: fadeInUp 0.8s ease forwards;
     }
     .contact__success-msg {
@@ -677,7 +686,7 @@
         </div>
         <div class="contact__info-row">
           <p class="contact__info-label">Representation</p>
-          <p class="contact__info-value">Club 10</p>
+          <p class="contact__info-value">Club10</p>
         </div>
       </div>
       <form class="contact-form reveal d2" id="contactForm" method="POST" action="https://formspree.io/f/myknoeke">
@@ -797,6 +806,7 @@
         if (res.ok) {
           contactForm.style.display = 'none';
           contactSuccess.style.display = 'block';
+          contactSuccess.classList.add('is-shown');
         }
       });
     }
