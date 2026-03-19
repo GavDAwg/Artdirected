@@ -362,7 +362,7 @@
     ══════════════════════════════════════════ */
     .contact {
       background: var(--charcoal);
-      padding: clamp(52px, 6.5vw, 90px) var(--pad);
+      padding: clamp(52px, 6.5vw, 90px) var(--pad) clamp(36px, 4.5vw, 63px);
     }
     .contact__inner {
       display: grid;
@@ -429,18 +429,18 @@
        FOOTER
     ══════════════════════════════════════════ */
     .footer {
-      background: var(--charcoal);
-      border-top: 1px solid rgba(255,255,255,0.07);
+      background: var(--off-white);
+      border-top: 1px solid var(--rule);
       padding: 24px var(--pad);
       display: flex; align-items: center; justify-content: space-between;
     }
     .footer__brand {
       font-family: var(--font-logo); font-size: 12px;
-      letter-spacing: 0.05em; color: rgba(255,255,255,0.22);
+      letter-spacing: 0.05em; color: rgba(0,0,0,0.35);
     }
     .footer__copy {
       font-family: var(--font-sans); font-size: 10px;
-      color: rgba(255,255,255,0.18);
+      color: rgba(0,0,0,0.3);
     }
 
     /* ══════════════════════════════════════════
@@ -482,8 +482,10 @@
     }
 
     #contactSuccess {
-      border-top: 1px solid rgba(255,255,255,0.15);
       padding-top: 24px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
     }
     #contactSuccess.is-shown {
       animation: fadeInUp 0.8s ease forwards;
@@ -669,7 +671,7 @@
         <div class="editorial__copy">
           <p>A Hasselblad Master with over two decades in advertising, Gavin has worked with leading agencies and global brands including Ogilvy, McCann, TBWA, Mercedes, Adidas, Microsoft and Heineken.</p>
           <p>The studio combines creative direction with AI-driven production to create campaign imagery without a traditional photoshoot.</p>
-          <p class="about__partnership">Developed in partnership with <a href="https://club10.co/" target="_blank">Club 10</a> and <a href="https://gavingoodman.com" target="_blank">Gavin Goodman</a>.</p>
+          <p class="about__partnership">Developed in partnership with <a href="https://club10.co/" target="_blank">Club10</a> and <a href="https://gavingoodman.com" target="_blank">Gavin Goodman</a>.</p>
         </div>
       </div>
     </div>
