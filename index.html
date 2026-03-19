@@ -474,11 +474,30 @@
       color: #4A7FA5;
     }
 
-    .contact__success {
-      display: none;
-      font-family: var(--font-sans); font-size: 14px;
-      font-weight: 400; color: rgba(255,255,255,0.74);
-      margin-top: 24px; letter-spacing: 0.02em;
+    #contactSuccess {
+      border-top: 1px solid rgba(255,255,255,0.15);
+      padding-top: 24px;
+      animation: fadeInUp 0.8s ease forwards;
+    }
+    .contact__success-msg {
+      font-family: var(--font-serif);
+      font-style: italic;
+      font-weight: 400;
+      font-size: clamp(28px, 3.5vw, 42px);
+      color: #fff;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .contact__success-sub {
+      font-family: var(--font-sans);
+      font-size: 14px;
+      font-weight: 300;
+      color: rgba(255,255,255,0.55);
+      line-height: 1.6;
+    }
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 @media (max-width: 768px) {
 
@@ -676,7 +695,10 @@
         </div>
         <button type="submit" class="btn-enquiry">Send Enquiry</button>
       </form>
-      <p class="contact__success" id="contactSuccess">Thank you — we'll be in touch.</p>
+      <div id="contactSuccess" style="display:none;">
+        <p class="contact__success-msg">Thank you.</p>
+        <p class="contact__success-sub">We'll be in touch shortly.</p>
+      </div>
     </div>
   </section>
 
