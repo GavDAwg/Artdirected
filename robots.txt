@@ -1,0 +1,13 @@
+User-agent: *
+Allow: /
+Sitemap: https://art-directed.com/sitemap.xml
+
+# AI crawler preferences
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
