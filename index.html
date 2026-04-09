@@ -5,12 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
   <title>ART.DIRECTED.</title>
   <meta name="description" content="ART.DIRECTED. creates campaign imagery using AI. Crafted by humans, executed with AI—no traditional photoshoot. Trusted by Mercedes, Adidas, Microsoft." />
-  <link rel="canonical" href="https://art-directed.com/index.html" />
+  <link rel="canonical" href="https://art-directed.com/" />
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +26,7 @@
       --rule:       #D8D5D1;
       --font-logo:  'Anton', sans-serif;
       --font-serif: 'EB Garamond', Georgia, serif;
-      --font-sans:  'DM Sans', sans-serif;
+      --font-sans:  'Montserrat', sans-serif;
       --nav-h:      80px;
       --pad:        clamp(28px, 5.5vw, 88px);
     }
@@ -35,7 +35,7 @@
       background: var(--off-white);
       color: var(--charcoal);
       font-family: var(--font-sans);
-      font-size: 16px;
+      font-size: 14px;
       line-height: 1.6;
       -webkit-font-smoothing: antialiased;
     }
@@ -58,7 +58,7 @@
     }
     .nav__logo {
       font-family: var(--font-logo);
-      font-size: 22px;
+      font-size: 26px;
       letter-spacing: 0.04em;
       color: var(--charcoal);
       transition: opacity 200ms ease;
@@ -103,7 +103,7 @@
        INTRO
     ══════════════════════════════════════════ */
     .intro {
-      padding: clamp(28px, 3.5vw, 52px) var(--pad) clamp(32px, 4vw, 56px);
+      padding: clamp(44px, 6vw, 80px) var(--pad) clamp(44px, 6vw, 80px);
       text-align: center;
     }
     .intro__inner {
@@ -114,10 +114,10 @@
       font-family: var(--font-serif);
       font-style: italic;
       font-weight: 400;
-      font-size: clamp(30px, 4.2vw, 52px);
-      color: var(--charcoal);
+      font-size: clamp(24px, 2.8vw, 42px);
+      color: #3D3935;
       line-height: 1.2;
-      margin-bottom: 24px;
+      margin-bottom: 12px;
     }
     .line-clip {
       display: block;
@@ -171,7 +171,7 @@
       font-style: italic;
       font-weight: 400;
       font-size: clamp(18px, 2.2vw, 28px);
-      color: var(--charcoal);
+      color: #3D3935;
       line-height: 1.1;
       text-align: center;
     }
@@ -321,15 +321,15 @@
     .editorial__copy p {
       font-family: var(--font-sans); font-size: 15px;
       font-weight: 400; line-height: 1.7; color: #1A1816;
-      margin-bottom: 14px; max-width: 56ch;
+      margin-bottom: 28px; max-width: 56ch;
     }
 
     /* About lead sentence */
     .about__lead {
       font-family: var(--font-serif); font-style: italic;
-      font-size: clamp(15px, 1.1vw, 17px);
+      font-size: clamp(24px, 2.8vw, 42px);
       color: var(--charcoal); line-height: 1.6;
-      margin-bottom: 22px;
+      margin-bottom: 32px;
     }
 
     /* ── Approach animated copy ─────────────── */
@@ -342,7 +342,7 @@
     .approach-line.is-visible { opacity: 1; transform: none; }
     .approach-line--lead {
       font-family: var(--font-serif); font-style: italic;
-      font-weight: 400; font-size: clamp(30px, 4.2vw, 52px);
+      font-weight: 400; font-size: clamp(24px, 2.8vw, 42px);
       color: rgba(255,255,255,0.85); line-height: 1.2;
       margin-bottom: 56px;
       transition-delay: 0ms;
@@ -599,24 +599,23 @@
 
   <!-- HERO -->
   <section class="hero">
-    <img class="hero__img" src="images/vacanza-2a.jpg" alt="ART.DIRECTED. — Campaign" width="2500" height="1395" fetchpriority="high" />
+    <img class="hero__img" src="images/hero-bg.webp" alt="ART.DIRECTED. — Campaign" width="3000" height="1444" fetchpriority="high" />
   </section>
 
   <!-- INTRO -->
   <section class="intro" id="introSection">
     <div class="intro__inner">
       <p class="intro__tagline">
-        <span class="line-clip"><span class="tl" id="introL1">crafted by humans.</span></span>
-        <span class="line-clip"><span class="tl" id="introL2">executed with AI.</span></span>
+        <span class="line-clip"><span class="tl" id="introL1">Campaign visuals created from your product images.</span></span>
       </p>
-      <span class="sub-clip"><span class="intro__sub"><span class="intro__sub-inner" id="introSub">Campaign imagery built from a single product image — no photoshoot required.</span></span></span>
+      <span class="sub-clip"><span class="intro__sub"><span class="intro__sub-inner" id="introSub">No photoshoot required.</span></span></span>
     </div>
   </section>
 
   <!-- WORK -->
   <section id="work">
     <div class="work-header reveal">
-      <h2 class="section-heading">Selected Campaigns</h2>
+      <h2 class="section-heading">A selection of campaign work.</h2>
     </div>
     <div class="work-grid">
       <a class="work-tile reveal d1" href="rhino.html">
@@ -696,12 +695,12 @@
 
   <!-- APPROACH -->
   <section class="editorial" id="approach" style="background:#000000; padding: clamp(44px, 6vw, 80px) var(--pad); text-align: center;">
-    <div style="max-width: 860px; margin: 0 auto;">
+    <div style="max-width: 560px; margin: 0 auto;">
       <div class="approach-copy" id="approachCopy">
-        <p class="approach-line approach-line--lead">Every project begins with a conversation, not a prompt.</p>
-        <p class="approach-line approach-line--body">You supply a product image.</p>
-        <p class="approach-line approach-line--body">We develop visual directions and present campaign concepts for approval.</p>
-        <p class="approach-line approach-line--body">Final imagery is executed with AI, using your product image as the reference.</p>
+        <p class="approach-line approach-line--lead">Every project starts with a conversation about the brand and the brief.</p>
+        <p class="approach-line approach-line--body">I develop visual directions and present mock-ups. We refine until the direction is right.</p>
+        <p class="approach-line approach-line--body">Every decision — environment, mood, composition — is shaped by two decades of campaign experience.</p>
+        <p class="approach-line approach-line--body">Final imagery is executed using AI.</p>
       </div>
     </div>
   </section>
@@ -713,11 +712,10 @@
         <img src="images/Gavin_Goodman_Profile_3.jpg" alt="Gavin Goodman — Photographer & Creative Director" />
       </div>
       <div class="about__text reveal d2">
-        <p class="about__lead">ART.DIRECTED. is a creative studio founded by Gavin Goodman, photographer and visual artist.</p>
         <div class="editorial__copy">
-          <p>A Hasselblad Master with over two decades in advertising, Gavin has worked with leading agencies and global brands including Ogilvy, McCann, TBWA, Mercedes, Adidas, Microsoft and Heineken.</p>
-          <p>The studio combines creative direction with AI-driven production to create campaign imagery without a traditional photoshoot.</p>
-          <p class="about__partnership">Developed in partnership with <a href="https://club10.co/" target="_blank">Club10</a> and <a href="https://gavingoodman.com" target="_blank">Gavin Goodman</a>.</p>
+          <p class="about__lead"><strong>I'm Gavin Goodman — a Cape Town–based photographer and visual artist, and a Hasselblad Master.</strong></p>
+          <p>For over twenty years I've worked on campaigns with agencies including Ogilvy, McCann, TBWA and BBDO, and brands including Mercedes, Adidas, Microsoft and Heineken.</p>
+          <p><strong>ART.DIRECTED.</strong> is a continuation of that work — the same creative standards and level of craft, without the traditional production model.</p>
         </div>
       </div>
     </div>
@@ -731,10 +729,6 @@
         <div class="contact__info-row">
           <p class="contact__info-label">Email</p>
           <p class="contact__info-value">studio@art-directed.com</p>
-        </div>
-        <div class="contact__info-row">
-          <p class="contact__info-label">Representation</p>
-          <p class="contact__info-value">Club10</p>
         </div>
       </div>
       <form class="contact-form reveal d2" id="contactForm" method="POST" action="https://formspree.io/f/myknoeke">
@@ -780,22 +774,21 @@
       if (!entries[0].isIntersecting) return;
 
       const l1El = document.getElementById('introL1');
-      const l2El = document.getElementById('introL2');
       const subEl = document.getElementById('introSub');
 
       const l1Words = wrapWordsBlur(l1El);
-      const l2Words = wrapWordsBlur(l2El);
       const subWords = wrapWordsBlur(subEl);
 
       let d = 0;
       l1Words.forEach(w => { w.style.transitionDelay = d.toFixed(2) + 's'; d += 0.10; });
-      d += 0.18;
-      l2Words.forEach(w => { w.style.transitionDelay = d.toFixed(2) + 's'; d += 0.10; });
-      d += 0.42;
-      subWords.forEach(w => { w.style.transitionDelay = d.toFixed(2) + 's'; d += 0.055; });
+
+      // Calculate delay for subWords
+      let subDelay = d + 0.28;
+      subWords.forEach(w => { w.style.transitionDelay = subDelay.toFixed(2) + 's'; subDelay += 0.07; });
 
       requestAnimationFrame(() => requestAnimationFrame(() => {
-        [...l1Words, ...l2Words, ...subWords].forEach(w => w.classList.add('is-visible'));
+        l1Words.forEach(w => w.classList.add('is-visible'));
+        subWords.forEach(w => w.classList.add('is-visible'));
       }));
 
       introObs.unobserve(introSection);
