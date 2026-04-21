@@ -132,7 +132,7 @@
       font-family: var(--font-sans);
       font-size: clamp(14px, 1.5vw, 15px);
       font-weight: 400;
-      color: #2A2724;
+        color: #3D3935;
       line-height: 1.4;
     }
     .intro__body {
@@ -144,8 +144,7 @@
       font-size: clamp(14px, 1.5vw, 15px);
       font-weight: 400;
       line-height: 1.7;
-      color: #2A2724;
-      opacity: 0.92;
+      color: #3D3935;
     }
     .intro__body p + p { margin-top: 24px; }
 
@@ -189,7 +188,7 @@
     }
     .work-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 24px;
     }
     @media (max-width: 900px) {
@@ -363,8 +362,8 @@
       font-family: var(--font-sans);
       font-style: normal;
       font-weight: 400;
-      font-size: clamp(13px, 1.4vw, 14px);
-      color: rgba(255,255,255,0.6);
+      font-size: clamp(14px, 1.5vw, 15px);
+      color: rgba(255,255,255,0.82);
       line-height: 1.6;
       margin-bottom: 20px;
     }
@@ -380,7 +379,7 @@
     ══════════════════════════════════════════ */
     .contact {
       background: var(--charcoal);
-      padding: clamp(52px, 6.5vw, 90px) var(--pad) clamp(36px, 4.5vw, 63px);
+      padding: clamp(32px, 4vw, 48px) var(--pad);
     }
     .contact__inner {
       display: grid;
@@ -604,6 +603,7 @@
   <nav class="nav">
     <a href="#" class="nav__logo">ART.DIRECTED.</a>
     <ul class="nav__links">
+      <li><a class="nav__link" href="index.html">Home</a></li>
       <li><a class="nav__link" href="#work">Campaigns</a></li>
       <li style="display:none"><a class="nav__link" href="#hybrid">Hybrid</a></li>
       <li><a class="nav__link" href="#approach">Approach</a></li>
@@ -626,7 +626,7 @@
       <span class="sub-clip"><span class="intro__sub"><span class="intro__sub-inner" id="introSub">No photoshoot required.</span></span></span>
 
       <div class="intro__body">
-        <p>What separates a great campaign from a generated one is the thinking behind it - the brief, the concept, the creative decisions that make it feel considered.</p>
+        <p>What separates a great campaign from an AI-generated one is the thinking behind it - the brief, the concept, the creative decisions that make it feel considered.</p>
         <p>You supply an existing product image. I develop the visual direction - concept, environment, mood - and present options for your approval. We refine until the direction is right.</p>
       </div>
     </div>
@@ -638,12 +638,12 @@
       <h2 class="section-heading">A selection of campaign work.</h2>
     </div>
     <div class="work-grid">
-      <a class="work-tile reveal d1" href="rhino.html">
+      <a class="work-tile reveal d1" href="lms.html">
         <div class="work-tile__thumb">
-          <img class="work-tile__img" src="images/Thumbnails/Rhino-thumb-sm.jpg" alt="Rhino Whisky" style="object-position: 85% center;" loading="lazy" />
+          <img class="work-tile__img" src="images/Thumbnails/lms-thumb-sm.jpg" alt="LMS" loading="lazy" />
         </div>
-        <p class="work-tile__name">Rhino Whisky</p>
-        <p class="work-tile__cat">Single Malt Whisky</p>
+        <p class="work-tile__name">LMS</p>
+        <p class="work-tile__cat">Luxury Accessories</p>
       </a>
       <a class="work-tile reveal d2" href="vacanza.html">
         <div class="work-tile__thumb">
@@ -666,27 +666,14 @@
         <p class="work-tile__name">Beauty &amp; Skincare</p>
         <p class="work-tile__cat">Selected Clients</p>
       </a>
-      <a class="work-tile reveal d5" href="lms.html">
+      <a class="work-tile reveal d5" href="rhino.html">
         <div class="work-tile__thumb">
-          <img class="work-tile__img" src="images/Thumbnails/lms-thumb-sm.jpg" alt="LMS" loading="lazy" />
+          <img class="work-tile__img" src="images/Thumbnails/Rhino-thumb-sm.jpg" alt="Rhino Whisky" style="object-position: 85% center;" loading="lazy" />
         </div>
-        <p class="work-tile__name">LMS</p>
-        <p class="work-tile__cat">Luxury Accessories</p>
+        <p class="work-tile__name">Rhino Whisky</p>
+        <p class="work-tile__cat">Single Malt Whisky</p>
       </a>
-      <a class="work-tile reveal d1" href="cadbury.html">
-        <div class="work-tile__thumb">
-          <img class="work-tile__img" src="images/Thumbnails/cadbury-thumb-sm.jpg" alt="Cadbury's" loading="lazy" />
-        </div>
-        <p class="work-tile__name">Cadbury's</p>
-        <p class="work-tile__cat">Confectionery</p>
-      </a>
-      <a class="work-tile reveal d2" href="philips.html">
-        <div class="work-tile__thumb">
-          <img class="work-tile__img" src="images/Thumbnails/phillips-thumb-sm.jpg" alt="Philips Airfryer" loading="lazy" />
-        </div>
-        <p class="work-tile__name">Philips Airfryer</p>
-        <p class="work-tile__cat">Kitchen Appliances</p>
-      </a>
+      
     </div>
   </section>
 
@@ -714,7 +701,7 @@
   </section>
 
   <!-- APPROACH -->
-  <section class="editorial" id="approach" style="background:#000000; padding: clamp(44px, 6vw, 64px) var(--pad) clamp(36px, 4vw, 52px); text-align: center;">
+  <section class="editorial" id="approach" style="background:#000000; padding: clamp(44px, 6vw, 80px) var(--pad) clamp(44px, 6vw, 80px); text-align: center;">
     <div style="max-width: 900px; margin: 0 auto;">
       <div class="approach-copy" id="approachCopy">
         <p class="approach-line approach-line--lead">Every project starts with a conversation about the brand and the brief.</p>
@@ -724,7 +711,7 @@
   </section>
 
   <!-- ABOUT -->
-  <section class="editorial" id="about" style="padding-top: clamp(36px, 4vw, 52px);">
+  <section class="editorial" id="about" style="padding: clamp(44px, 6vw, 80px) var(--pad);">
     <div class="about__inner">
       <div class="about__image reveal">
         <img src="images/Gavin_Goodman_Profile_3.jpg" alt="Gavin Goodman — Photographer & Creative Director" loading="lazy" />

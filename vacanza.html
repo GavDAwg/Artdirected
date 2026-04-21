@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -26,7 +26,7 @@
       --rule:       #D8D5D1;
       --font-logo:  'Anton', sans-serif;
       --font-serif: 'EB Garamond', Georgia, serif;
-      --font-sans:  'DM Sans', sans-serif;
+      --font-sans:  'Montserrat', sans-serif;
       --nav-h:      80px;
       --pad:        clamp(28px, 5.5vw, 88px);
     }
@@ -55,7 +55,7 @@
     }
     .nav__logo {
       font-family: var(--font-logo);
-      font-size: 22px;
+      font-size: 26px;
       letter-spacing: 0.04em;
       color: var(--charcoal);
       transition: opacity 200ms ease;
@@ -69,11 +69,11 @@
     }
     .nav__link {
       font-family: var(--font-sans);
-      font-size: 12px;
-      font-weight: 500;
+      font-size: 11px;
+      font-weight: 700;
       text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--charcoal);
+      letter-spacing: 0.12em;
+      color: #3D3935;
       transition: opacity 200ms ease;
     }
     .nav__link:hover { opacity: 0.38; }
@@ -91,7 +91,7 @@
     }
     .back-bar__link {
       display: flex; align-items: center; gap: 10px;
-      font-family: var(--font-sans); font-size: 14px;
+      font-family: var(--font-sans); font-size: 11px;
       font-weight: 600; text-transform: uppercase;
       letter-spacing: 0.16em; color: var(--charcoal);
       transition: opacity 200ms ease;
@@ -108,7 +108,8 @@
     .overlay__header { margin-bottom: clamp(32px, 4vw, 48px); text-align: center; }
     .overlay__title {
       font-family: var(--font-serif); font-weight: 400;
-      font-size: clamp(28px, 4vw, 52px);
+      font-size: clamp(24px, 2.8vw, 34px);
+      font-style: italic;
       color: var(--charcoal); line-height: 1.1;
       margin-bottom: 10px;
     }
@@ -119,10 +120,10 @@
     }
 
     .overlay__row-label {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-weight: 400;
-      font-size: 20px;
-      color: var(--charcoal);
+      font-size: clamp(14px, 1.5vw, 15px);
+      color: #3D3935;
       line-height: 1.1;
       margin-bottom: 10px;
       margin-top: 18px;
@@ -214,6 +215,7 @@
   <nav class="nav">
     <a href="index.html" class="nav__logo">ART.DIRECTED.</a>
     <ul class="nav__links">
+      <li><a class="nav__link" href="index.html">Home</a></li>
       <li><a class="nav__link" href="index.html#work">Campaigns</a></li>
       <li><a class="nav__link" href="index.html#approach">Approach</a></li>
       <li><a class="nav__link" href="index.html#about">About</a></li>

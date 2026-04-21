@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=EB+Garamond:ital,wght@0,400;1,400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,400&family=EB+Garamond:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     img { display: block; max-width: 100%; height: auto; }
@@ -24,29 +24,29 @@
       --rule:       #D8D5D1;
       --font-logo:  'Anton', sans-serif;
       --font-serif: 'EB Garamond', Georgia, serif;
-      --font-sans:  'DM Sans', sans-serif;
+      --font-sans:  'Montserrat', sans-serif;
       --nav-h:      80px;
       --pad:        clamp(28px, 5.5vw, 88px);
     }
     body { background: var(--off-white); color: var(--charcoal); font-family: var(--font-sans); font-size: 16px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
     .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 300; height: var(--nav-h); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--pad); background: var(--off-white); border-bottom: 1px solid var(--rule); }
-    .nav__logo { font-family: var(--font-logo); font-size: 22px; letter-spacing: 0.04em; color: var(--charcoal); transition: opacity 200ms ease; }
+    .nav__logo { font-family: var(--font-logo); font-size: 26px; letter-spacing: 0.04em; color: var(--charcoal); transition: opacity 200ms ease; }
     .nav__logo:hover { opacity: 0.4; }
     .nav__links { display: flex; align-items: center; gap: 36px; list-style: none; }
-    .nav__link { font-family: var(--font-sans); font-size: 12px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.1em; color: var(--charcoal); transition: opacity 200ms ease; }
+    .nav__link { font-family: var(--font-sans); font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #3D3935; transition: opacity 200ms ease; }
     .nav__link:hover { opacity: 0.38; }
     .back-bar { margin-top: var(--nav-h); height: var(--nav-h); display: flex; align-items: center; justify-content: center; padding: 0 var(--pad); border-bottom: 1px solid var(--rule); background: rgba(247,245,242,0.95); }
-    .back-bar__link { display: flex; align-items: center; gap: 10px; font-family: var(--font-sans); font-size: 14px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--charcoal); transition: opacity 200ms ease; }
+    .back-bar__link { display: flex; align-items: center; gap: 10px; font-family: var(--font-sans); font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.16em; color: var(--charcoal); transition: opacity 200ms ease; }
     .back-bar__link:hover { opacity: 0.4; }
     .campaign-content { padding: clamp(44px, 5.5vw, 80px) var(--pad) clamp(80px, 10vw, 128px); max-width: 1400px; margin: 0 auto; }
     .overlay__header { margin-bottom: clamp(32px, 4vw, 48px); text-align: center; }
-    .overlay__title { font-family: var(--font-serif); font-weight: 400; font-size: clamp(28px, 4vw, 52px); color: var(--charcoal); line-height: 1.1; margin-bottom: 10px; }
+    .overlay__title { font-family: var(--font-serif); font-weight: 400; font-size: clamp(24px, 2.8vw, 34px); font-style: italic; color: var(--charcoal); line-height: 1.1; margin-bottom: 10px; }
     .overlay__subtitle { font-family: var(--font-sans); font-size: 11px; font-weight: 500; text-transform: uppercase; letter-spacing: 0.13em; color: var(--warm-grey); }
     .overlay__row-label {
-      font-family: var(--font-serif);
+      font-family: var(--font-sans);
       font-weight: 400;
-      font-size: 20px;
-      color: var(--charcoal);
+      font-size: clamp(14px, 1.5vw, 15px);
+      color: #3D3935;
       line-height: 1.1;
       margin-bottom: 10px;
       margin-top: 18px;
@@ -83,6 +83,7 @@
   <nav class="nav">
     <a href="index.html" class="nav__logo">ART.DIRECTED.</a>
     <ul class="nav__links">
+      <li><a class="nav__link" href="index.html">Home</a></li>
       <li><a class="nav__link" href="index.html#work">Campaigns</a></li>
       <li><a class="nav__link" href="index.html#approach">Approach</a></li>
       <li><a class="nav__link" href="index.html#about">About</a></li>
@@ -97,18 +98,18 @@
       <h1 class="overlay__title">LMS — Luxury Accessories</h1>
     </div>
     <p class="overlay__row-label">Product image supplied by client</p>
-    <div class="overlay__image"><img src="images/LMS/product.webp" alt="LMS blue velvet bag, supplied reference product" /></div>
+    <div class="overlay__image"><img src="images/lms/product.webp" alt="LMS blue velvet bag, supplied reference product" /></div>
     <p class="overlay__row-label">Campaign imagery</p>
     <div class="overlay__images">
-      <div class="overlay__image"><img src="images/LMS/LMS_1.webp" alt="LMS campaign visual, blue bag on salt pan landscape" loading="lazy" /></div>
-      <div class="overlay__image"><img src="images/LMS/LMS_2.webp" alt="LMS campaign visual, blue bag with open sky" loading="lazy" /></div>
+      <div class="overlay__image"><img src="images/lms/LMS_1.webp" alt="LMS campaign visual, blue bag on salt pan landscape" loading="lazy" /></div>
+      <div class="overlay__image"><img src="images/lms/LMS_2.webp" alt="LMS campaign visual, blue bag with open sky" loading="lazy" /></div>
       <div class="overlay__image-pair">
-        <div class="overlay__image"><img src="images/LMS/LMS_3.webp" alt="LMS campaign visual, brown bag on canvas backdrop" loading="lazy" /></div>
-        <div class="overlay__image"><img src="images/LMS/LMS_4.webp" alt="LMS campaign visual, brown bag with geometric rock" loading="lazy" /></div>
+        <div class="overlay__image"><img src="images/lms/LMS_3.webp" alt="LMS campaign visual, blue bag" loading="lazy" /></div>
+        <div class="overlay__image"><img src="images/lms/LMS_4.webp" alt="LMS campaign visual, blue bag" loading="lazy" /></div>
       </div>
-      <div class="overlay__image"><img src="images/LMS/LMS_5.webp" alt="LMS campaign visual, blue bag close-up" loading="lazy" /></div>
-      <div class="overlay__image"><img src="images/LMS/LMS_6.webp" alt="LMS campaign visual, brown bag detail" loading="lazy" /></div>
-      <div class="overlay__image"><img src="images/LMS/LMS_7.webp" alt="LMS campaign visual, blue bag with shadow" loading="lazy" /></div>
+      <div class="overlay__image"><img src="images/lms/LMS_5.webp" alt="LMS campaign visual, blue bag close-up" loading="lazy" /></div>
+      <div class="overlay__image"><img src="images/lms/LMS_6.webp" alt="LMS campaign visual, blue bag" loading="lazy" /></div>
+      <div class="overlay__image"><img src="images/lms/LMS_7.webp" alt="LMS campaign visual, blue bag with shadow" loading="lazy" /></div>
       <!-- Inserted images per user instructions -->
       <!-- Removed duplicate LMS_7.webp image -->
     </div>
