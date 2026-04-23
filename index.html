@@ -153,8 +153,8 @@
       display: inline-block;
       opacity: 0;
       transform: translateY(16px);
-      transition: opacity 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94),
-                  transform 1.0s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+      transition: opacity 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                  transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     }
     .blur-word.is-visible {
       opacity: 1;
@@ -744,6 +744,10 @@
           <p class="contact__info-label">Email</p>
           <p class="contact__info-value">studio@art-directed.com</p>
         </div>
+        <div class="contact__info-row">
+          <p class="contact__info-label">Instagram</p>
+          <p class="contact__info-value"><a href="https://www.instagram.com/gavin_goodman" target="_blank" style="color: inherit; text-decoration: none;">@gavin_goodman</a></p>
+        </div>
       </div>
       <form class="contact-form reveal d2" id="contactForm" method="POST" action="https://formspree.io/f/myknoeke">
         <div class="form-row">
@@ -798,16 +802,30 @@
       const l1Words = wrapWordsBlur(l1El);
       const subWords = wrapWordsBlur(subEl);
 
+      // Animate .intro__body paragraphs word by word
+      const introBody = introSection.querySelector('.intro__body');
+      const bodyParagraphs = introBody ? introBody.querySelectorAll('p') : [];
+      const bodyWordEls = [];
+      bodyParagraphs.forEach(p => {
+        const words = wrapWordsBlur(p);
+        bodyWordEls.push(...words);
+      });
+
       let d = 0;
-      l1Words.forEach(w => { w.style.transitionDelay = d.toFixed(2) + 's'; d += 0.10; });
+      l1Words.forEach(w => { w.style.transitionDelay = d.toFixed(3) + 's'; d += 0.06; });
 
       // Calculate delay for subWords
-      let subDelay = d + 0.28;
-      subWords.forEach(w => { w.style.transitionDelay = subDelay.toFixed(2) + 's'; subDelay += 0.07; });
+      let subDelay = d + 0.15;
+      subWords.forEach(w => { w.style.transitionDelay = subDelay.toFixed(3) + 's'; subDelay += 0.04; });
+
+      // Calculate delay for body words (after subline finishes)
+      let bodyDelay = subDelay + 0.2;
+      bodyWordEls.forEach(w => { w.style.transitionDelay = bodyDelay.toFixed(3) + 's'; bodyDelay += 0.025; });
 
       requestAnimationFrame(() => requestAnimationFrame(() => {
         l1Words.forEach(w => w.classList.add('is-visible'));
         subWords.forEach(w => w.classList.add('is-visible'));
+        bodyWordEls.forEach(w => w.classList.add('is-visible'));
       }));
 
       introObs.unobserve(introSection);
@@ -827,11 +845,11 @@
           el.classList.add('is-visible');
           const words = wrapWordsBlur(el);
           words.forEach(w => {
-            w.style.transitionDelay = d.toFixed(2) + 's';
-            w.style.transitionDuration = '0.6s, 0.5s';
-            d += 0.05;
+            w.style.transitionDelay = d.toFixed(3) + 's';
+            w.style.transitionDuration = '0.35s, 0.3s';
+            d += 0.03;
           });
-          d += 0.15;
+          d += 0.08;
         });
         requestAnimationFrame(() => requestAnimationFrame(() => {
           approachCopy.querySelectorAll('.approach-line--body .blur-word').forEach(w => w.classList.add('is-visible'));
