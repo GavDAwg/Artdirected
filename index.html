@@ -624,11 +624,10 @@
       <p class="intro__tagline">
         <span class="line-clip"><span class="tl" id="introL1">Campaign visuals created from your product images.</span></span>
       </p>
-      <span class="sub-clip"><span class="intro__sub"><span class="intro__sub-inner" id="introSub">No photoshoot required.</span></span></span>
+
 
       <div class="intro__body">
-        <p>What separates a great campaign from an AI-generated one is the thinking behind it - the brief, the concept, the creative decisions that make it feel considered.</p>
-        <p>You supply an existing product image. I develop the visual direction - concept, environment, mood - and present options for your approval. We refine until the direction is right.</p>
+        <p>What separates a great campaign from an AI-generated one is the thinking behind it - the concept, the environment, the creative decisions that make it feel considered. You supply the product images. I develop the visual direction and build the campaign world around them.</p>
       </div>
     </div>
   </section>
@@ -797,11 +796,7 @@
       if (!entries[0].isIntersecting) return;
 
       const l1El = document.getElementById('introL1');
-      const subEl = document.getElementById('introSub');
-
       const l1Words = wrapWordsBlur(l1El);
-      const subWords = wrapWordsBlur(subEl);
-
       // Animate .intro__body paragraphs word by word
       const introBody = introSection.querySelector('.intro__body');
       const bodyParagraphs = introBody ? introBody.querySelectorAll('p') : [];
@@ -810,24 +805,15 @@
         const words = wrapWordsBlur(p);
         bodyWordEls.push(...words);
       });
-
       let d = 0;
       l1Words.forEach(w => { w.style.transitionDelay = d.toFixed(3) + 's'; d += 0.06; });
-
-      // Calculate delay for subWords
-      let subDelay = d + 0.15;
-      subWords.forEach(w => { w.style.transitionDelay = subDelay.toFixed(3) + 's'; subDelay += 0.04; });
-
-      // Calculate delay for body words (after subline finishes)
-      let bodyDelay = subDelay + 0.2;
+      // Calculate delay for body words (after tagline finishes)
+      let bodyDelay = d + 0.35;
       bodyWordEls.forEach(w => { w.style.transitionDelay = bodyDelay.toFixed(3) + 's'; bodyDelay += 0.025; });
-
       requestAnimationFrame(() => requestAnimationFrame(() => {
         l1Words.forEach(w => w.classList.add('is-visible'));
-        subWords.forEach(w => w.classList.add('is-visible'));
         bodyWordEls.forEach(w => w.classList.add('is-visible'));
       }));
-
       introObs.unobserve(introSection);
     }, { threshold: 0.15 });
     introObs.observe(introSection);
