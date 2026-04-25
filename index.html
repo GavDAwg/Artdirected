@@ -126,6 +126,7 @@
     }
     .line-clip + .line-clip { margin-top: -0.04em; }
     .tl { display: block; }
+    #introL1 { opacity: 0; }
 
     /* Sub line */
     .sub-clip { display: block; padding-bottom: 0.1em; }
@@ -623,7 +624,7 @@
   <section class="intro" id="introSection">
     <div class="intro__inner">
       <p class="intro__tagline">
-        <span class="line-clip"><span class="tl" id="introL1">Campaign imagery. Art-directed.</span></span>
+        <span class="line-clip"><span class="tl" id="introL1" style="visibility: hidden;">Campaign imagery. Art-directed.</span></span>
       </p>
 
 
@@ -798,6 +799,8 @@
       if (!entries[0].isIntersecting) return;
 
       const l1El = document.getElementById('introL1');
+      l1El.style.visibility = 'visible';
+      l1El.style.opacity = '1';
       const l1Words = wrapWordsBlur(l1El);
       // Animate .intro__body paragraphs word by word
       const introBody = introSection.querySelector('.intro__body');
